@@ -1,13 +1,26 @@
 #header {
     border: 1px solid red;
     height: 50px;
+    padding: 3px;
 }
 
 #header>nav {
-    display: inline;
+    display: inline-block;
+    height: 50px;
+}
+
+#homePlace {
+    width: 150px;
+    height: 50px;
+}
+
+#homeButton {
+    height: 32px;
+    width: 80px;
 }
 
 #usersInfo {
+    float: right;
     font-size: 30px;
 }
 
@@ -17,7 +30,7 @@
 }
 
 #searchPlace {
-    float: right;
+    width: 300px;
 }
 
 #searchInput {
@@ -29,19 +42,6 @@
 #searchIcon {
     width: 28px;
     height: 28px;
-}
-
-#menu {}
-
-#menu-items {
-    list-style-type: none;
-}
-
-#menu-item {
-    width: 200px;
-    color: white;
-    font-size: 40px;
-    background-color: red;
 }
 
 aside {
