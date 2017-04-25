@@ -1,0 +1,23 @@
+{
+  "name": "leisure-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinKamenov/Leisure-Playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartinKamenov/Leisure-Playground/issues"
+  },
+  "homepage": "https://github.com/MartinKamenov/Leisure-Playground#readme",
+  "dependencies": {
+    "systemjs": "^0.20.12",
+    "systemjs-plugin-babel": "0.0.21"
+  }
+}
