@@ -1,4 +1,4 @@
-import { add, all } from './practise.js';
+import { hashChecker } from 'router';
+import { jquery } from '../jQuery/jquery.js';
 
-add('Maria');
-console.log(all());
+hashChecker();

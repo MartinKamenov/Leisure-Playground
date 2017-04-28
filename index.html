@@ -5,12 +5,12 @@
     <title>
         Gamesforgamers
     </title>
-    <style type="text/css">
-        @import "css/main.css";
-    </style>
+    <link href="./css/main.css" rel="stylesheet">
 </head>
 
 <body>
+    <script src="./node_modules/systemjs/dist/system.js">
+    </script>
     <div id="wrapper">
         <header>
             <h1>GAMES FOR DEVELOPERS</h1>
@@ -36,19 +36,7 @@
 
         </main>
     </div>
-    <script src="./node_modules/systemjs/dist/system.js">
-    </script>
-    <script>
-        SystemJS.config({
-            'transpiler': 'plugin-babel',
-            'map': {
-                'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
-                'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
-                'main': './scripts/main.js'
-            }
-        });
-
-        System.import('main');
+    <script src="./SystemJS-config.js">
     </script>
 </body>
 
