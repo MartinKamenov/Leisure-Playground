@@ -1,5 +1,7 @@
 import { Handlebars } from 'handlebars';
 
+var handlebar = 'my handlebar';
+
 function homeTemplate() {
     var template = "HomeTemplate";
     return template;
@@ -13,7 +15,7 @@ function errorTemplate() {
     document.body.appendChild(p);
     var a = document.createElement('a');
     a.innerHTML = 'Return to home page';
-    a.href = '#home';
+    a.href = '../index.html';
     document.body.appendChild(a);
 }
 
