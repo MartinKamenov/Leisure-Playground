@@ -7,8 +7,8 @@ function homeTemplate() {
     return template;
 }
 
-function loginTemplate() {
-    var template = "<div id='login'>" +
+function registerTemplate() {
+    var template = "<div id='register'>" +
         '<label>Uesrname: </label>' +
         '<input id="username"></input>' +
         '<br>' +
@@ -32,4 +32,4 @@ function errorTemplate() {
     document.body.appendChild(a);
 }
 
-export { homeTemplate, loginTemplate, errorTemplate };
+export { homeTemplate, registerTemplate, errorTemplate };

@@ -1,5 +1,6 @@
-import { homeTemplate, loginTemplate, errorTemplate } from 'templates';
+import { homeTemplate, registerTemplate, errorTemplate } from 'templates';
 import { jquery } from 'jQuery';
+import { processToRegister } from 'usersOptions';
 
 function hashChecker() {
     $(document).ready(function() {
@@ -20,9 +21,10 @@ function checkForPath(hashUrl) {
     if (hashUrl === 'home') {
         var container = document.getElementById('page-container');
         container.innerHTML = homeTemplate();
-    } else if (hashUrl === 'login') {
+    } else if (hashUrl === 'register') {
         var container = document.getElementById('page-container');
-        container.innerHTML = loginTemplate();
+        container.innerHTML = registerTemplate();
+        processToRegister();
     } else if (hashUrl === '') {
         location.replace('#home');
     } else {
