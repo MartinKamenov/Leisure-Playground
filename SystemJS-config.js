@@ -4,7 +4,9 @@ SystemJS.config({
         'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
         'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
         'main': './scripts/main.js',
-        'router': './scripts/router.js'
+        'router': './scripts/router.js',
+        'templates': './scripts/templates.js',
+        'handlebars': './handlebars-v4.0.5.js'
     }
 });
 
