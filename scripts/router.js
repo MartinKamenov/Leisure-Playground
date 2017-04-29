@@ -1,5 +1,5 @@
-import { homeTemplate, errorTemplate } from 'templates';
-import { jquery } from '../jQuery/jquery.js';
+import { homeTemplate, loginTemplate, errorTemplate } from 'templates';
+import { jquery } from 'jQuery';
 
 function hashChecker() {
     $(document).ready(function() {
@@ -7,7 +7,6 @@ function hashChecker() {
         checkForPath(hashUrl);
     });
     $(window).on('hashchange', (ev) => {
-        console.log('in');
         const hashUrl = location.hash;
         checkForPath(hashUrl);
     });
@@ -22,7 +21,8 @@ function checkForPath(hashUrl) {
         var container = document.getElementById('page-container');
         container.innerHTML = homeTemplate();
     } else if (hashUrl === 'login') {
-
+        var container = document.getElementById('page-container');
+        container.innerHTML = loginTemplate();
     } else if (hashUrl === '') {
         location.replace('#home');
     } else {

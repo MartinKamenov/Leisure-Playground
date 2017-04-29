@@ -7,6 +7,19 @@ function homeTemplate() {
     return template;
 }
 
+function loginTemplate() {
+    var template = "<div id='login'>" +
+        '<label>Uesrname: </label>' +
+        '<input id="username"></input>' +
+        '<br>' +
+        '<label>Password: </label>' +
+        '<input id="password" type="password"></input>' +
+        '<br>' +
+        '<button id="submit">Create user</button>' +
+        '</div>';
+    return template;
+}
+
 function errorTemplate() {
     document.body.innerHTML = '';
     var p = document.createElement('p');
@@ -19,4 +32,4 @@ function errorTemplate() {
     document.body.appendChild(a);
 }
 
-export { homeTemplate, errorTemplate };
+export { homeTemplate, loginTemplate, errorTemplate };

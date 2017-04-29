@@ -6,7 +6,8 @@ SystemJS.config({
         'main': './scripts/main.js',
         'router': './scripts/router.js',
         'templates': './scripts/templates.js',
-        'handlebars': './handlebars-v4.0.5.js'
+        'handlebars': './handlebars-v4.0.5.js',
+        'jQuery': './jQuery/jquery.js'
     }
 });
 
