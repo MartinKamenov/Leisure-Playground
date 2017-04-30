@@ -1,6 +1,6 @@
 import { jQuery } from 'jQuery';
 
-function processToRegister(username, password) {
+function processToRegister() {
     var btn = document.getElementById("submit");
     btn.addEventListener("click", () => {
         const username = $('#username').val();
@@ -13,7 +13,17 @@ function processToRegister(username, password) {
     });
 }
 
-function register() {
+function processToLogin() {
+    var btn = document.getElementById("submit");
+    btn.addEventListener("click", () => {
+        const username = $('#username').val();
+        const password = $('#password').val();
+
+        login(username, password);
+    });
+}
+
+function register(username, password) {
     const user = {
         username,
         password
@@ -32,4 +42,27 @@ function register() {
     });
 }
 
-export { processToRegister };
+function login(username, password) {
+    const user = {
+        username,
+        password
+    }
+
+    $.ajax({
+        url: 'https://baas.kinvey.com/user/kid_B1F_NepCe/login',
+        method: 'POST',
+        headers: {
+            // Kinvey localStorage.getItem('auth-toke');
+            Authorization: `Basic ${btoa('kid_B1F_NepCe' + ':' + 'ecb4db62af65485b966a2a63e4940008')}`
+        },
+        data: JSON.stringify(user),
+        contentType: 'application/json',
+        success: (data) => {
+            localStorage.setItem('auth-token', data._kmd.authtoken);
+            localStorage.setItem('username', data.username);
+        },
+        error: () => alert("failed login!")
+    });
+}
+
+export { processToRegister, processToLogin };
