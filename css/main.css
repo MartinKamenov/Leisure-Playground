@@ -3,76 +3,87 @@
     font-family: docalisme;
     src: url('docalisme.ttf');
 }
+#name-header{
+    font-family: docalisme , serif;
+    font-size: 70px;
+    display: inline-block;
+    margin-left: 30px;
+}
+#registration-form{    
+    margin-top: 20px;
+    width: 300px;
+    display: inline-block;
+    margin-bottom: 15px;
+    position: absolute;
+    right: 10px;
+}
 body{
-    width: 98%;
-    display: block;
-    position: relative;
-    background-color:#C3EFF9;
+    background-color: #FFF7E3;
 }
 header{
-    width: 100%;
-    height: 18%;
-    font-family: docalisme,serif;
-    font-size: 30px;
-    color: #865EA2;
-    background-color: #C3EFF9;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-header h1{
-    margin: 0;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 150px;
+}
 
+#home-image{
+height: 40px;
+width: auto;
 }
-nav{
-    top: 18%;
-    box-sizing: border-box;
-    left:0;
-    background-color:#865EA2; 
-    height: 8%;
+#navigation{
     width: 100%;
-    position: fixed;
-}
-nav ul{
-    margin: 0;
-    height: 100%;
+    font-size: 18px;
     list-style-type: none;
+    display: table-cell;
+    vertical-align: middle ;
 }
-#home a img{
-    width: 40px;
-    height: auto;
-    top:0;
-}
-main {
-    top: 200px;
-    position: relative;
-    z-index: -10;
 
+#navigation li{
+    margin-right: 26px;
+    display: inline-block;
 }
-nav ul li{
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  float: left;
+nav {
+    position: relative;
+    border-style: solid;
+    border-width: 2px;
+    background-color: #FF0901;
 }
-main article p{
+.col-sm-10{
+    float: right;
+    width: 230px;
+}
+.form-group{
+    margin-bottom: 5px;
+}
+.btn btn-default{
+    font-size: 300px;
+}
+#search-menu{
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 3px;
+}
+main{
+    margin-top: 40px;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    display: table;
 }
-footer{
-    height: 10%;
-    display: inline;
-    background-color: #865EA2;
-
+#searchWord,#searchType{
+    border-radius: 5px;
+    font-size: 20px;
+    height: 30px;
 }
-#wrapper{
-        left: 0;
-        position: absolute;
-        display: inline;
+.dropdown-toggle{
+    font-size: 17px;
+    border-radius: 0;
+    border: 0;
+    background-color: #FF0901;
+}
+.dropdown-toggle:hover{
+    background-color: #F8362F;
+}
+#src-image{
+    height: 18px;
+    width: auto;
 }
