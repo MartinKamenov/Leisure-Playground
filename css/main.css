@@ -87,3 +87,7 @@ main{
     height: 18px;
     width: auto;
 }
+#search-error{
+    margin-top: 10px;
+    font-size: 18px;
+}
