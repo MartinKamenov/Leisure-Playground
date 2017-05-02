@@ -9,7 +9,9 @@ SystemJS.config({
         'handlebars': './handlebars-v4.0.5.js',
         'jQuery': './jQuery/jquery.js',
         'usersOptions': './scripts/usersOptions.js',
-        'search': './scripts/search.js'
+        'search': './scripts/search.js',
+        'hashchange':'./scripts/hashChange.js',
+
     }
 });
 

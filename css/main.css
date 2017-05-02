@@ -28,6 +28,7 @@ header{
 #home-image{
 height: 40px;
 width: auto;
+cursor: pointer;
 }
 #navigation{
     width: 100%;
@@ -64,7 +65,7 @@ nav {
     top: 3px;
 }
 main{
-    margin-top: 40px;
+    margin-top:80px;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -90,4 +91,20 @@ main{
 #search-error{
     margin-top: 10px;
     font-size: 18px;
+}
+.dropdown-menu > li > p {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.dropdown-menu > li > p:hover {
+    background-color: #C5CED1;
+}
+#register{
+    float: right;
 }
