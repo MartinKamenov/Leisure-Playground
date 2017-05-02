@@ -1,4 +1,4 @@
-$('#register').click(function () {
+$('#register-button').click(function () {
     window.location.hash = "#register";
 });
 $('#home-image').click(function () {

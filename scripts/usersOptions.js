@@ -1,7 +1,7 @@
 import { jQuery } from 'jQuery';
 
 function processToRegister() {
-    var btn = document.getElementById("register");
+    var btn = document.getElementById("register-button");
     btn.addEventListener("click", () => {
         const username = $('#username').val();
         const password = $('#password').val();
@@ -14,7 +14,7 @@ function processToRegister() {
 }
 
 function processToLogin() {
-    var btn = document.getElementById("login");
+    var btn = document.getElementById("login-button");
     btn.addEventListener("click", () => {
         const username = $('#username').val();
         const password = $('#password').val();

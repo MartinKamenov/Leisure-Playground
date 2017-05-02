@@ -105,6 +105,6 @@ main{
 .dropdown-menu > li > p:hover {
     background-color: #C5CED1;
 }
-#register{
+#register-button{
     float: right;
 }
