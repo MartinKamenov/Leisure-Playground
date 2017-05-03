@@ -1,6 +1,5 @@
 import { hashChecker } from 'router';
-import { processToRegister, processToLogin } from 'usersOptions';
+import { isLoggedIn, processToLogin } from 'usersOptions';
 
+isLoggedIn();
 hashChecker();
-processToRegister();
-processToLogin();

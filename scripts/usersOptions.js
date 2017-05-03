@@ -1,4 +1,21 @@
 import { jQuery } from 'jQuery';
+import { hasUser, noUser } from 'templates';
+
+function isLoggedIn() {
+    var username = localStorage.getItem('username');
+    if (username) {
+        var registrationForm = document.getElementById('registration-form');
+        registrationForm.innerHTML = hasUser();
+        const logoutButton = document.getElementById('logout-button');
+        logoutButton.addEventListener('click', () => {
+            localStorage.clear();
+        });
+    } else {
+        var registrationForm = document.getElementById('registration-form');
+        registrationForm.innerHTML = noUser();
+        processToLogin();
+    }
+}
 
 function processToRegister() {
     var btn = document.getElementById("register-button");
@@ -65,4 +82,4 @@ function login(username, password) {
     });
 }
 
-export { processToRegister, processToLogin };
+export { isLoggedIn, processToRegister, processToLogin };

@@ -1,4 +1,4 @@
-import { homeTemplate, registerTemplate, loginTemplate, errorTemplate } from 'templates';
+import { homeTemplate, registerTemplate, errorTemplate } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin } from 'usersOptions';
 
@@ -22,13 +22,10 @@ function checkForPath(hashUrl) {
         var container = document.getElementById('page-container');
         container.innerHTML = homeTemplate();
     } else if (hashUrl === 'register') {
+        console.log('in');
         var container = document.getElementById('page-container');
         container.innerHTML = registerTemplate();
         processToRegister();
-    } else if (hashUrl === 'login') {
-        var container = document.getElementById('page-container');
-        container.innerHTML = loginTemplate();
-        processToLogin();
     } else if (hashUrl === '') {
         location.replace('#home');
     } else {
