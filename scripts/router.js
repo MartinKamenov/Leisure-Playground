@@ -1,4 +1,4 @@
-import { homeTemplate, registerTemplate, errorTemplate } from 'templates';
+import { homeTemplate, registerTemplate, errorTemplate, UploadReadyProjectTemplate, UploadProgressProjectTemplate } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin } from 'usersOptions';
 
@@ -18,17 +18,29 @@ function checkForPath(hashUrl) {
     if (hashUrl === undefined) {
         location.replace('#home');
     }
-    if (hashUrl === 'home') {
-        var container = document.getElementById('page-container');
-        container.innerHTML = homeTemplate();
-    } else if (hashUrl === 'register') {
-        var container = document.getElementById('page-container');
-        container.innerHTML = registerTemplate();
-        processToRegister();
-    } else if (hashUrl === '') {
-        location.replace('#home');
-    } else {
-        errorTemplate();
+    switch (hashUrl){  
+        case 'home':
+            var container = document.getElementById('page-container');
+            container.innerHTML = homeTemplate();
+            break;
+        case 'register':
+            var container = document.getElementById('page-container');
+            container.innerHTML = registerTemplate();
+            processToRegister();
+            break;
+        case '':
+            location.replace('#home');
+            break;
+        case 'upload-ready-project':
+            var container = document.getElementById('page-container');
+            container.innerHTML = UploadReadyProjectTemplate();
+            break;
+        case 'upload-progress-project':
+            var container = document.getElementById('page-container');
+            container.innerHTML = UploadProgressProjectTemplate();
+            break;
+        default:
+            errorTemplate();
     }
 }
 

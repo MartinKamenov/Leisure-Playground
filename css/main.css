@@ -15,7 +15,7 @@
     display: inline-block;
     margin-bottom: 15px;
     position: absolute;
-    right: 10px;
+    right: 30px;
 }
 body{
     background-color: #FFF7E3;
@@ -105,6 +105,40 @@ main{
 .dropdown-menu > li > p:hover {
     background-color: #C5CED1;
 }
-#register-button{
+#register{
+    float: right
+}
+#create-new-user, #upload-project-form{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+p.normal-text{ 
+    display: inline-block;
+    font-weight: normal;
+}
+.upload-project{
     float: right;
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+    background-color: #E57811;
+    border-color: #E57811;
+}
+.project-type-header{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 400px;
+    text-align: center;
+}
+textarea.description{
+    height: 150px;
+    resize: none;
+}
+textarea.contact{
+    height: 75px;
+}
+html{
+    margin-bottom: 100px;
 }
