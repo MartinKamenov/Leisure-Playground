@@ -6,13 +6,20 @@ function isLoggedIn() {
     if (username) {
         var registrationForm = document.getElementById('registration-form');
         registrationForm.innerHTML = hasUser();
+
         const logoutButton = document.getElementById('logout-button');
         logoutButton.addEventListener('click', () => {
             localStorage.clear();
+            isLoggedIn();
+            window.location.hash = "#home";
         });
     } else {
         var registrationForm = document.getElementById('registration-form');
         registrationForm.innerHTML = noUser();
+        var registerButton = document.getElementById('register');
+        registerButton.addEventListener('click', () => {
+            window.location.hash = "#register";
+        });
         processToLogin();
     }
 }
@@ -20,8 +27,10 @@ function isLoggedIn() {
 function processToRegister() {
     var btn = document.getElementById("register-button");
     btn.addEventListener("click", () => {
-        const username = $('#username').val();
-        const password = $('#password').val();
+        const username = $('#register-username').val();
+        const password = $('#register-password').val();
+        console.log(username);
+        console.log(password);
         if (username.length > 2 && password.length > 5) {
             register(username, password);
         } else {
@@ -54,7 +63,13 @@ function register(username, password) {
         },
         data: JSON.stringify(user),
         contentType: 'application/json',
-        success: (data) => alert('user registered!'),
+        success: (data) => {
+            alert('User Registered!');
+            localStorage.setItem('auth-token', data._kmd.authtoken);
+            localStorage.setItem('username', data.username);
+            isLoggedIn();
+            window.location.hash = "#home";
+        },
         error: () => alert("failed registering!")
     });
 }
@@ -77,8 +92,13 @@ function login(username, password) {
         success: (data) => {
             localStorage.setItem('auth-token', data._kmd.authtoken);
             localStorage.setItem('username', data.username);
+            isLoggedIn();
         },
-        error: () => alert("failed login!")
+        error: () => {
+            alert("failed login!");
+            localStorage.clear();
+            isLoggedIn();
+        }
     });
 }
 

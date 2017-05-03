@@ -38,7 +38,7 @@ function noUser() {
         '<div class="form-group">' +
         '<div class="col-sm-offset-2 col-sm-10">' +
         '<button type="submit" id="login-button" class="btn btn-success">Login</button>' +
-        '<button type="submit" id="register" class="btn btn-danger">Register</button>' +
+        '<button type="submit" href="#register" id="register" class="btn btn-danger">Register</button>' +
         '</div>' +
         '</div>' +
         '</form>';
@@ -47,11 +47,11 @@ function noUser() {
 
 function registerTemplate() {
     var template = "<div id='register'>" +
-        '<label>Uesrname: </label>' +
-        '<input id="username"></input>' +
+        '<label>Username: </label>' +
+        '<input id="register-username"></input>' +
         '<br>' +
         '<label>Password: </label>' +
-        '<input id="password" type="password"></input>' +
+        '<input id="register-password" type="password"></input>' +
         '<br>' +
         '<button id="register-button">Create user</button>' +
         '</div>';

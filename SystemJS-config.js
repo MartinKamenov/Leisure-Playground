@@ -10,8 +10,8 @@ SystemJS.config({
         'jQuery': './jQuery/jquery.js',
         'usersOptions': './scripts/usersOptions.js',
         'search': './scripts/search.js',
-        'hashchange':'./scripts/hashChange.js',
-
+        'hashchange': './scripts/hashChange.js',
+        'localStorageOptions': './scripts/localStorageOptions.js'
     }
 });
 

@@ -22,7 +22,6 @@ function checkForPath(hashUrl) {
         var container = document.getElementById('page-container');
         container.innerHTML = homeTemplate();
     } else if (hashUrl === 'register') {
-        console.log('in');
         var container = document.getElementById('page-container');
         container.innerHTML = registerTemplate();
         processToRegister();
