@@ -1,11 +1,11 @@
 // change the sezies of things dynamically
 if ($("html").width() < 960) {
-    $("#name-header").text("G F D");                                            //all of these are coppies if the page is loaded
+    $("#name-header").text("G F DEVS");                                            //all of these are coppies if the page is loaded
 }                                                                               //in a format which wont load all elements properly
 if ($("html").width() < 915) {
     $('#search-menu').css("position", "relative");
 }
-if ($("html").width() < 500) {
+if ($("html").width() < 570) {
     $('#registration-form').css({
         'position': 'relative',
         'display': '',
@@ -24,7 +24,7 @@ function Resize() {
     let windowWidth = $("html").width();
     //header
     if ($("html").width() < 960) {
-        $("#name-header").text("G F D");
+        $("#name-header").text("G F DEVS");
     }                                                                           // changes the header
     else {
         $("#name-header").text("GAMES FOR DEVELOPERS");
@@ -48,7 +48,7 @@ function Resize() {
         $(".upload-project-form").css("width", "400");
     }
     //nav bar
-    if ($(document).scrollTop() >= 149 && $("html").width() > 500) {
+    if ($(document).scrollTop() >= 149 && $("html").width() > 570) {
         $("nav").wrap("<div id='nav-wrap'></div>");                                         // makes the nav bar and search 
         $("#nav-wrap").css({                                                                //get a position:fixed when scrolled under
             'width': $("nav").width(),                                                      //and puts a div in its place so the page  
@@ -65,7 +65,7 @@ function Resize() {
         })
     }
     else {
-        if ($(document).scrollTop() >= 299 && $("html").width() < 500) {
+        if ($(document).scrollTop() >= 299 && $("html").width() < 570) {
             $("nav").wrap("<div id='nav-wrap'></div>");
             $("#nav-wrap").css({
                 'width': $("nav").width(),
@@ -88,7 +88,7 @@ function Resize() {
         }
     }
     //register 
-    if ($("html").width() < 500) {
+    if ($("html").width() < 570) {
         $('#registration-form').css({
             'position': 'relative',
             'display': '',                                                          //repositions the register 
