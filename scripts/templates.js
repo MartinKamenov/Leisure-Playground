@@ -69,7 +69,7 @@ function registerTemplate() {
 function UploadReadyProjectTemplate() {
     var template = 
         '<h1 class="project-type-header">Ready Project</h1>'+
-        '<form id="upload-project-form">'+
+        '<form class="upload-project-form">'+
         '<div class="form-group">'+
         '<label for="">Project name <p class="normal-text">(longer than 2 symbols)</p></label>'+
         '<input type="Username" class="form-control" id="" placeholder="Username">'+
@@ -93,7 +93,7 @@ function UploadReadyProjectTemplate() {
 function UploadProgressProjectTemplate() {
     var template = 
     '<h1 class="project-type-header">Project in progress</h1>'+
-        '<form id="upload-project-form">'+
+        '<form class="upload-project-form">'+
         '<div class="form-group">'+
         '<label for="">Project name <p class="normal-text">(longer than 2 symbols)</p></label>'+
         '<input type="Username" class="form-control" id="" placeholder="Username">'+
@@ -104,13 +104,13 @@ function UploadProgressProjectTemplate() {
         '</div>'+
         '<div class="form-group">'+
         '<label for="">How to reach me</label>'+
-        '<textarea type="text" class="form-control contact" id="" placeholder="Input information on how someone'+
-        'could contact you in order to discuss your project like an email, skype or a postal code :D">'+
+        '<textarea type="text" class="form-control contact" id="" placeholder="Input information on how someone '+
+        'could contact you in order to discuss your project like an email, skype or your postal code :D">'+
         '</textarea>'+
         '</div>'+
         '<div class="form-group">'+
         '<label for="">Description</label>'+
-        '<textarea type="text" class="form-control description" id="" placeholder="Your description">'+
+        '<textarea type="text" class="form-control description" id="" placeholder="Describe your project. Ideas, plot and add a story on how u got to start it and develop it">'+
         '</textarea>'+
         '</div>'+
         '<div>'+
