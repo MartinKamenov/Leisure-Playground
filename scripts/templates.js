@@ -72,7 +72,7 @@ function UploadReadyProjectTemplate() {
         '<form class="upload-project-form">'+
         '<div class="form-group">'+
         '<label for="">Project name <p class="normal-text">(longer than 2 symbols)</p></label>'+
-        '<input type="Username" class="form-control" id="" placeholder="Username">'+
+        '<input type="Username" class="form-control" id="" placeholder="Project name">'+
         '</div>'+
         '<div class="form-group">'+
         '<label for="">Video Link</label>'+
@@ -96,7 +96,7 @@ function UploadProgressProjectTemplate() {
         '<form class="upload-project-form">'+
         '<div class="form-group">'+
         '<label for="">Project name <p class="normal-text">(longer than 2 symbols)</p></label>'+
-        '<input type="Username" class="form-control" id="" placeholder="Username">'+
+        '<input type="Username" class="form-control" id="" placeholder="Project name">'+
         '</div>'+
         '<div class="form-group">'+
         '<label for="">Repository Link</label>'+
