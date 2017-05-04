@@ -139,6 +139,7 @@ textarea.description{
 }
 textarea.contact{
     height: 75px;
+    resize: none;
 }
 html{
     margin-bottom: 100px;

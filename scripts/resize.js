@@ -6,9 +6,13 @@ if ($("html").width() < 915) {
     $('#search-menu').css("position", "relative");
 }
 if ($("html").width() < 500) {
-        $('#registration-form').css("position", "relative");
-        $('header').css("height","300" );
-    }
+    $('#registration-form').css({
+        'position': 'relative',
+        'display': '',
+        'margin-left': '20px',
+    });
+    $('header').css("height", "300");
+}
 $(window).resize(myFunc);
 $(window).scroll(myFunc);
 function myFunc() {
@@ -25,7 +29,13 @@ function myFunc() {
     else {
         $('#search-menu').css("position", "absolute");
     }
-    if ($(document).scrollTop() >= 149) {
+    if ($(document).scrollTop() >= 149 && $("html").width() > 500) {
+        $("nav").wrap("<div id='nav-wrap'></div>");
+        $("#nav-wrap").css({
+            'width': $("nav").width(),
+            'height': $("nav").height()
+        })
+
         $("nav").css({
             'position': 'fixed',
             'top': '0px',
@@ -33,15 +43,35 @@ function myFunc() {
         })
     }
     else {
-        $("nav").css({
-            'position': 'relative',
-            'top': '',
-            'width': "100%"
-        })
+        if ($(document).scrollTop() >= 299 && $("html").width() < 500) {
+            $("nav").wrap("<div id='nav-wrap'></div>");
+            $("#nav-wrap").css({
+                'width': $("nav").width(),
+                'height': $("nav").height()
+            })
+            $("nav").css({
+                'position': 'fixed',
+                'top': '0px',
+                'width': windowWidth
+            })
+        }
+        else {
+            let navigation = $("#nav-wrap").contents();
+            $("#nav-wrap").replaceWith(navigation);
+            $("nav").css({
+                'position': 'relative',
+                'top': '',
+                'width': "100%"
+            })
+        }
     }
     if ($("html").width() < 500) {
-        $('#registration-form').css("position", "relative");
-        $('header').css("height","300" );
+        $('#registration-form').css({
+            'position': 'relative',
+            'display': '',
+            'margin-left': '20px',
+        });
+        $('header').css("height", "300");
     }
     else {
         $('#registration-form').css("position", "absolute");
