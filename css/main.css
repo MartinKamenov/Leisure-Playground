@@ -39,7 +39,7 @@ cursor: pointer;
 }
 
 #navigation li{
-    margin-right: 26px;
+    margin-right: 15px;
     display: inline-block;
 }
 nav {
@@ -63,6 +63,7 @@ nav {
     position: absolute;
     right: 15px;
     top: 3px;
+    margin-bottom: 6px;
 }
 main{
     margin-top:80px;
@@ -109,7 +110,7 @@ main{
     float: right
 }
 #create-new-user, .upload-project-form{
-    width: 500px;
+    width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
