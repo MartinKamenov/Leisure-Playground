@@ -14,6 +14,7 @@ if ($("html").width() < 570) {
     $('header').css("height", "300");
 }
 if ($("html").width() < 500) {
+    $(".project-type-header").css("width", "350");
     $("main").css("width", "100%");
     $("#create-new-user").css("width", "300");
     $(".upload-project-form").css("width", "300");
@@ -37,12 +38,14 @@ function Resize() {
         $('#search-menu').css("position", "absolute");
     }
     //the register page/uplod project pages                                                  //resizes them so they fit if the screen
-    if ($("html").width() < 500) {                                                           //get too small
+    if ($("html").width() < 500) {  
+        $(".project-type-header").css("width", "350");                                                         //get too small
         $("main").css("width", "100%");
         $("#create-new-user").css("width", "300");
         $(".upload-project-form").css("width", "300");
     }
     else {
+        $(".project-type-header").css("width", "400");
         $("main").css("width", "80%");
         $("#create-new-user").css("width", "400");
         $(".upload-project-form").css("width", "400");
