@@ -42,8 +42,7 @@ function processToRegister() {
     btn.addEventListener("click", () => {
         const username = $('#register-username').val();
         const password = $('#register-password').val();
-        console.log(username);
-        console.log(password);
+
         if (username.length > 2 && password.length > 5) {
             register(username, password);
         } else {

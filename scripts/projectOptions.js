@@ -1,5 +1,26 @@
 import { hasLoggedIn, appKey, appSecret, kinveyUrl } from 'usersOptions';
 
+function processToUploadReadyProject() {
+    var btn = document.getElementById("uploadReadyProject");
+    btn.addEventListener("click", () => {
+        const projectName = $('#projectName').val();
+        const videoLink = $('#videoLink').val();
+        const description = $('#description').val();
+
+        const project = {
+            ProjectName: projectName,
+            VideoLink: videoLink,
+            Description: description
+        };
+        if (projectName.length > 2 && videoLink.length > 5 && description.length > 5) {
+            uploadReadyProject(project);
+        } else {
+            console.log('Project properties are too short');
+        }
+    });
+}
+
+
 function uploadReadyProject(project) {
     const username = localStorage.getItem('username');
     const authToken = localStorage.getItem('auth-token');
@@ -59,4 +80,4 @@ function getAllProjects() {
     });
 }
 
-export { uploadReadyProject, uploadProjectInProgress, getUserProject, getAllProjects }
+export { processToUploadReadyProject, uploadReadyProject, uploadProjectInProgress, getUserProject, getAllProjects }
