@@ -7,7 +7,7 @@ function uploadReadyProject(project) {
         url: `${kinveyUrl}/appdata/${appKey}/projects/${username}`,
         method: 'PUT',
         headers: {
-            Authorization: `Kinvey ${username}`
+            Authorization: `Kinvey ${authToken}`
         },
         data: JSON.stringify(project),
         contentType: 'application/json',
@@ -25,6 +25,8 @@ function uploadProjectInProgress() {
 function getUserProject() {
     const authToken = localStorage.getItem('auth-token');
     const username = localStorage.getItem('username');
+
+    const projects = {};
     $.ajax({
         url: `${kinveyUrl}/appdata/${appKey}/projects/${username}`,
         method: 'GET',
@@ -33,10 +35,11 @@ function getUserProject() {
         },
         contentType: 'application/json',
         success: (userProjects) => {
-            return userProjects;
+            console.log(userProjects);
         },
         error: () => alert("failed getting user projects!")
     });
+    return projects;
 }
 
 function getAllProjects() {
@@ -50,7 +53,7 @@ function getAllProjects() {
         },
         contentType: 'application/json',
         success: (allProjects) => {
-            return allProjects;
+            console.log(allProjects);
         },
         error: () => alert("failed getting user projects!")
     });

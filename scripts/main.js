@@ -4,4 +4,14 @@ import { uploadReadyProject, uploadProjectInProgress, getUserProject, getAllProj
 
 isLoggedIn();
 hashChecker();
+/*
+if you are logged in you can upload like this
+
+const project = {
+    whoDidThis: "someone",
+    sorce_code: "some code"
+};
+uploadReadyProject(project);*/
+
+
 //getUserProject();
