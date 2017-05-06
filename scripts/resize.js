@@ -103,7 +103,9 @@ function Resize() {
         $('#registration-form').css("position", "absolute");
         $('header').css("height", "150px");
     }
+    //kill da ninjas
+    if($("html").width() < 930 && $('.ninja-image').length!==0){                             //removes the ninjas 
+         $('.ninja-image').remove();
+    }
 };
-
-
 

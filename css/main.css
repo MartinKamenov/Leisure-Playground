@@ -144,3 +144,17 @@ textarea.contact{
 html{
     margin-bottom: 100px;
 }
+.ninja-image{
+    position: absolute;
+    height: 150px;
+    width: auto;
+    z-index: 500000;
+}
+#ninja-left{
+    top: 400px;
+    left: 15px;
+}
+#ninja-right{
+    top: 400px;
+    right: 15px;
+}
