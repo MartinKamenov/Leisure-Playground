@@ -188,6 +188,46 @@ function showUserProjects(userProject) {
     return this;
 }
 
+function showAllProjects(allProjects) {
+    var template = '<h1 class="project-type-header">Ready Projects: </h1>' +
+        '<form class="upload-project-form" id="form">' +
+        '</form>';
+
+    var container = document.getElementById('page-container');
+    container.innerHTML = template;
+    var form = document.getElementById('form');
+
+    for (var i = 0; i <= allProjects.length; i += 1) {
+        var project = allProjects[i];
+        var projectDescriptions = project.Description.split(',');
+        var projectNames = project.ProjectName.split(',');
+        var projectVideos = project.VideoLink.split(',');
+        var userName = project._id;
+
+        for (var j = 0; j <= projectNames.length; j += 1) {
+
+            var div = document.createElement('div');
+
+            var h1 = document.createElement('h1');
+            h1.innerHTML = 'UserName: ' + userName + '<br>';
+            h1.innerHTML += (i + 1) + ": " + projectNames[j] + '<br>';
+            div.appendChild(h1);
+
+            var h3 = document.createElement('h3');
+            h3.innerHTML = `Link: <a href="${projectVideos[j]}" target="_blank" >${projectVideos[j]}</a><br>`;
+            div.appendChild(h3);
+
+            var p = document.createElement('p');
+            p.innerHTML = `<h4>Description: </h4> ${projectDescriptions[j]}`;
+            div.appendChild(p);
+
+            form.appendChild(div);
+        }
+    }
+
+    return template;
+}
+
 function errorTemplate() {
     document.body.innerHTML = '';
     var p = document.createElement('p');
@@ -209,5 +249,6 @@ export {
     UploadReadyProjectTemplate,
     UploadProgressProjectTemplate,
     showUserProjects,
-    noProjects
+    noProjects,
+    showAllProjects
 };

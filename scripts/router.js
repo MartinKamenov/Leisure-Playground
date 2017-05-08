@@ -5,11 +5,12 @@ import {
     UploadReadyProjectTemplate,
     UploadProgressProjectTemplate,
     showUserProjects,
-    noProjects
+    noProjects,
+    showAllProjects
 } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin, hasLoggedIn } from 'usersOptions';
-import { processToUploadReadyProject, getUserProject } from 'projectOptions';
+import { processToUploadReadyProject, getUserProject, getAllProjects } from 'projectOptions';
 
 function hashChecker() {
     $(document).ready(function() {
@@ -41,14 +42,6 @@ function checkForPath(hashUrl) {
             break;
         case '':
             location.replace('#home');
-            break;
-        case 'ready-projects':
-            var container = document.getElementById('page-container');
-            container.innerHTML = ('<p>some text</p>');
-            break;
-        case 'project-in-progress':
-            var container = document.getElementById('page-container');
-            container.innerHTML = ('<p>some text</p>');
             break;
         case 'upload-ready-project':
             var isLogged = hasLoggedIn();
@@ -89,11 +82,12 @@ function checkForPath(hashUrl) {
             break;
         case 'ready-projects':
             var container = document.getElementById('page-container');
-            container.innerHTML = ('<p>some text</p>');
+            getAllProjects().then((projects) => {
+                showAllProjects(projects);
+            });
             break;
         case 'project-in-progress':
             var container = document.getElementById('page-container');
-            container.innerHTML = ('<p>some text</p>');
             break;
         default:
             errorTemplate();

@@ -13,8 +13,8 @@ function processToUploadReadyProject() {
             getUserProject().then((data) => {
                 console.log(data);
                 var allProjectNames = data.ProjectName.split(',');
-                var allVideoLinks = data.ProjectName.split(',');
-                var allDescriptions = data.ProjectName.split(',');
+                var allVideoLinks = data.VideoLink.split(',');
+                var allDescriptions = data.Description.split(',');
 
                 if (data.ProjectName) {
                     allProjectNames.push(projectName);
@@ -41,6 +41,7 @@ function processToUploadReadyProject() {
                     VideoLink: videoLink,
                     Description: description
                 };
+
                 uploadReadyProject(project);
             });
         }
