@@ -121,6 +121,13 @@ function UploadProgressProjectTemplate() {
     return template;
 }
 
+function noProjects() {
+    var container = document.getElementById('page-container');
+    var h1 = document.createElement('h1');
+    h1.innerHTML = "This user has no projects yet.";
+    container.appendChild(h1);
+}
+
 function showUserProjects(userProject) {
     var projectNames = userProject.ProjectName;
     var videoLinks = userProject.VideoLink;
@@ -132,28 +139,49 @@ function showUserProjects(userProject) {
 
     var container = document.getElementById('page-container');
     container.innerHTML = template;
+    var form = document.getElementById('form');
 
-    for (var i = 0; i < projectNames.length; i += 1) {
-        var div = document.createElement('div');
-        if (i % 2) {
-            div.style.backgroundColor = "lightgrey";
-        } else {
-            div.style.backgroundColor = "white";
+    if (projectNames instanceof Array) {
+        for (var i = 0; i < projectNames.length; i += 1) {
+            var div = document.createElement('div');
+            if (i % 2) {
+                div.style.backgroundColor = "lightgrey";
+            } else {
+                div.style.backgroundColor = "white";
+            }
+            var h1 = document.createElement('h1');
+            h1.innerHTML = (i + 1) + ": " + projectNames[i] + '<br>';
+            div.appendChild(h1);
+
+            var h3 = document.createElement('h3');
+            h3.innerHTML = `Link: <a href="${videoLinks[i]}">${videoLinks[i]}</a><br>`;
+            div.appendChild(h3);
+
+            var p = document.createElement('p');
+            p.innerHTML = `<h4>Description: </h4> ${descriptions[i]}`;
+            div.appendChild(p);
+
+            form.appendChild(div);
         }
+    } else if (typeof projectNames === 'string' || projectNames instanceof String) {
+        var div = document.createElement('div');
         var h1 = document.createElement('h1');
-        h1.innerHTML = i + ": " + projectNames[i] + '<br>';
+        h1.innerHTML += "1: " + projectNames + '<br>';
         div.appendChild(h1);
 
         var h3 = document.createElement('h3');
-        h3.innerHTML = `Link: <a href="${videoLinks[i]}">${videoLinks[i]}</a><br>`;
+        h3.innerHTML = `Link: <a href="${videoLinks}">${videoLinks}</a><br>`;
         div.appendChild(h3);
 
         var p = document.createElement('p');
-        p.innerHTML = `<h4>Description: </h4> ${descriptions[i]}`;
+        p.innerHTML = `<h4>Description: </h4> ${descriptions}`;
         div.appendChild(p);
 
-        var form = document.getElementById('form');
         form.appendChild(div);
+    } else {
+        var h1 = document.createElement('h1');
+        h1.innerHTML = "This user has no projects yet.";
+        form.appendChild(h1);
     }
 
     return this;
@@ -179,5 +207,6 @@ export {
     errorTemplate,
     UploadReadyProjectTemplate,
     UploadProgressProjectTemplate,
-    showUserProjects
+    showUserProjects,
+    noProjects
 };

@@ -4,7 +4,8 @@ import {
     errorTemplate,
     UploadReadyProjectTemplate,
     UploadProgressProjectTemplate,
-    showUserProjects
+    showUserProjects,
+    noProjects
 } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin, hasLoggedIn } from 'usersOptions';
@@ -55,6 +56,7 @@ function checkForPath(hashUrl) {
                 h1.style.color = 'red';
                 container.appendChild(h1);
                 container.innerHTML += registerTemplate();
+                processToRegister();
             }
             break;
         case 'upload-progress-project':
@@ -69,12 +71,13 @@ function checkForPath(hashUrl) {
                 h1.style.color = 'red';
                 container.appendChild(h1);
                 container.innerHTML += registerTemplate();
+                processToRegister();
             }
             break;
         case 'show-user-projects':
             getUserProject().then((userProject) => {
                 showUserProjects(userProject);
-            });
+            }).catch(() => noProjects());
             break;
         default:
             errorTemplate();

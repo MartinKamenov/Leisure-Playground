@@ -34,6 +34,7 @@ function processToUploadReadyProject() {
 
                 uploadReadyProject(project);
             }).catch((data) => {
+
                 const project = {
                     ProjectName: projectName,
                     VideoLink: videoLink,
