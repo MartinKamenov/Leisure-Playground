@@ -38,10 +38,10 @@ function checkForPath(hashUrl) {
             container.innerHTML = "";
             container.innerHTML = registerTemplate();
             processToRegister();
-            break;
+        break;
         case '':
             location.replace('#home');
-            break;
+        break;
         case 'upload-ready-project':
             var isLogged = hasLoggedIn();
             var container = document.getElementById('page-container');
@@ -58,7 +58,7 @@ function checkForPath(hashUrl) {
                 container.innerHTML += registerTemplate();
                 processToRegister();
             }
-            break;
+        break;
         case 'upload-progress-project':
             var isLogged = hasLoggedIn();
             var container = document.getElementById('page-container');
@@ -73,12 +73,20 @@ function checkForPath(hashUrl) {
                 container.innerHTML += registerTemplate();
                 processToRegister();
             }
-            break;
+        break;
         case 'show-user-projects':
             getUserProject().then((userProject) => {
                 showUserProjects(userProject);
             }).catch(() => noProjects());
-            break;
+        break;
+        case 'ready-projects':
+            var container = document.getElementById('page-container');
+            container.innerHTML=('<p>some text</p>');
+        break;
+        case 'project-in-progress':
+            var container = document.getElementById('page-container');
+            container.innerHTML=('<p>some text</p>');
+        break;
         default:
             errorTemplate();
     }
