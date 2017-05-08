@@ -1,5 +1,7 @@
 import { hasLoggedIn, appKey, appSecret, kinveyUrl } from 'usersOptions';
 
+const separator = '|^|';
+
 function processToUploadReadyProject() {
     var btn = document.getElementById("uploadReadyProject");
     btn.addEventListener("click", () => {
@@ -10,9 +12,9 @@ function processToUploadReadyProject() {
         if (projectName.length > 2 && videoLink.length > 5 && description.length > 5) {
 
             getUserProject().then((data) => {
-                var allProjectNames = data.ProjectName.split(',');
-                var allVideoLinks = data.VideoLink.split(',');
-                var allDescriptions = data.Description.split(',');
+                var allProjectNames = data.ProjectName.split(separator);
+                var allVideoLinks = data.VideoLink.split(separator);
+                var allDescriptions = data.Description.split(separator);
 
                 if (data.ProjectName) {
                     allProjectNames.push(projectName);
@@ -20,9 +22,9 @@ function processToUploadReadyProject() {
                     allDescriptions.push(description);
                 }
 
-                var allProjectNamesString = allProjectNames.join(',');
-                var allVideoLinksString = allVideoLinks.join(',');
-                var allDescriptionsString = allDescriptions.join(',');
+                var allProjectNamesString = allProjectNames.join(separator);
+                var allVideoLinksString = allVideoLinks.join(separator);
+                var allDescriptionsString = allDescriptions.join(separator);
 
                 console.log(allProjectNamesString);
 
@@ -60,10 +62,10 @@ function processToUploadProjectInProgress() {
         if (projectName.length > 2 && projectUrl.length > 5 && description.length > 5 && contacts.length > 5) {
 
             getUserProjectInProgress().then((data) => {
-                var allProjectNames = data.ProjectName.split(',');
-                var allUrls = data.Url.split(',');
-                var allDescriptions = data.Description.split(',');
-                var allContacts = data.Contacts.split(',');
+                var allProjectNames = data.ProjectName.split(separator);
+                var allUrls = data.Url.split(separator);
+                var allDescriptions = data.Description.split(separator);
+                var allContacts = data.Contacts.split(separator);
 
                 if (data.ProjectName) {
                     allProjectNames.push(projectName);
@@ -72,10 +74,10 @@ function processToUploadProjectInProgress() {
                     allContacts.push(contacts);
                 }
 
-                var allProjectNamesString = allProjectNames.join(',');
-                var allUrlsString = allUrls.join(',');
-                var allDescriptionsString = allDescriptions.join(',');
-                var allContactsString = allContacts.join(',');
+                var allProjectNamesString = allProjectNames.join(separator);
+                var allUrlsString = allUrls.join(separator);
+                var allDescriptionsString = allDescriptions.join(separator);
+                var allContactsString = allContacts.join(separator);
 
                 const project = {
                     ProjectName: allProjectNamesString,

@@ -1,6 +1,7 @@
 import { Handlebars } from 'handlebars';
 
 var handlebar = 'my handlebar';
+const separator = '|^|';
 
 function homeTemplate() {
     var template = "HomeTemplate";
@@ -130,9 +131,10 @@ function noProjects() {
 }
 
 function showUserProjects(userProject) {
-    var projectNames = userProject.ProjectName.split(',');
-    var videoLinks = userProject.VideoLink.split(',');
-    var descriptions = userProject.Description.split(',');
+    var projectNames = userProject.ProjectName.split(separator);
+    console.log(projectNames);
+    var videoLinks = userProject.VideoLink.split(separator);
+    var descriptions = userProject.Description.split(separator);
     var template =
         '<h1 class="project-type-header">Ready Projects: </h1>' +
         '<form class="upload-project-form" id="form">' +
@@ -200,9 +202,9 @@ function showAllProjects(allProjects) {
 
     for (var i = 0; i < allProjects.length; i += 1) {
         var project = allProjects[i];
-        var projectDescriptions = project.Description.split(',');
-        var projectNames = project.ProjectName.split(',');
-        var projectVideos = project.VideoLink.split(',');
+        var projectDescriptions = project.Description.split(separator);
+        var projectNames = project.ProjectName.split(separator);
+        var projectVideos = project.VideoLink.split(separator);
         var userName = project._id;
 
         for (var j = 0; j < projectNames.length; j += 1) {
