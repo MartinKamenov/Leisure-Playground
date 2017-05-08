@@ -35,20 +35,14 @@ function processToUploadReadyProject() {
                 };
 
                 uploadReadyProject(project);
+            }).catch(() => {
+                const project = {
+                    ProjectName: projectName,
+                    VideoLink: videoLink,
+                    Description: description
+                };
+                uploadReadyProject(project);
             });
-            /*.catch((data) => {
-                            console.log('broken');
-                            const project = {
-                                ProjectName: projectName,
-                                VideoLink: videoLink,
-                                Description: description
-                            };
-                            uploadReadyProject(project);
-                        });
-                    } else {
-                        console.log('Project properties are too short');
-                    }
-                })*/
         }
     });
 }
