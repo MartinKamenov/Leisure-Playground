@@ -200,11 +200,34 @@ function getAllProjects() {
     );
 }
 
+function getAllNotReadyProjects() {
+    const authToken = localStorage.getItem('auth-token');
+    const username = localStorage.getItem('username');
+
+    const projects = {};
+
+    return new Promise((resolve, reject) =>
+        $.ajax({
+            url: `${kinveyUrl}/appdata/${appKey}/notReadyProjects`,
+            method: 'GET',
+            headers: {
+                Authorization: `Kinvey ${authToken}`
+            },
+            contentType: 'application/json',
+            success: (allProjects) => {
+                resolve(allProjects);
+            },
+            error: () => reject()
+        })
+    );
+}
+
 export {
     processToUploadReadyProject,
     processToUploadProjectInProgress,
     uploadReadyProject,
     uploadProjectInProgress,
     getUserProject,
-    getAllProjects
+    getAllProjects,
+    getAllNotReadyProjects
 }

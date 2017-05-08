@@ -212,12 +212,61 @@ function showAllProjects(allProjects) {
             var div = document.createElement('div');
 
             var h1 = document.createElement('h1');
-            h1.innerHTML = 'UserName: ' + userName + '<br>';
+            h1.innerHTML = 'Username: ' + userName + '<br>';
             h1.innerHTML += (projectNumber) + ": " + projectNames[j] + '<br>';
             div.appendChild(h1);
 
             var h3 = document.createElement('h3');
             h3.innerHTML = `Link: <a href="${projectVideos[j]}" target="_blank" >${projectVideos[j]}</a><br>`;
+            div.appendChild(h3);
+
+            var p = document.createElement('p');
+            p.innerHTML = `<h4>Description: </h4> ${projectDescriptions[j]}`;
+            div.appendChild(p);
+            projectNumber += 1;
+
+            form.appendChild(div);
+        }
+    }
+
+    return template;
+}
+
+function showAllNotReadyProjects(allProjects) {
+    var template = '<h1 class="project-type-header">Projects in progress: </h1>' +
+        '<form class="upload-project-form" id="form">' +
+        '</form>';
+
+    var container = document.getElementById('page-container');
+    container.innerHTML = template;
+    var form = document.getElementById('form');
+    var projectNumber = 1;
+
+    console.log(allProjects);
+
+    for (var i = 0; i < allProjects.length; i += 1) {
+        var project = allProjects[i];
+        var projectDescriptions = project.Description.split(separator);
+        var projectNames = project.ProjectName.split(separator);
+        var projectUrl = project.Url.split(separator);
+        var projectContacts = project.Contacts.split(separator);
+        var userName = project._id;
+
+        for (var j = 0; j < projectNames.length; j += 1) {
+
+            var div = document.createElement('div');
+
+            var h1 = document.createElement('h1');
+            h1.innerHTML = 'Username: ' + userName + '<br>';
+            h1.innerHTML += (projectNumber) + ": " + projectNames[j] + '<br>';
+            div.appendChild(h1);
+
+            var h3 = document.createElement('h3');
+            h3.innerHTML = `Url: <a href="${projectUrl[j]}" target="_blank" >${projectUrl[j]}</a><br>`;
+            div.appendChild(h3);
+
+            var h3 = document.createElement('h3');
+            h3.innerHTML = `Contact me: <h2>${projectContacts[j]}</h2><br>`;
             div.appendChild(h3);
 
             var p = document.createElement('p');
@@ -254,5 +303,6 @@ export {
     UploadProgressProjectTemplate,
     showUserProjects,
     noProjects,
-    showAllProjects
+    showAllProjects,
+    showAllNotReadyProjects
 };

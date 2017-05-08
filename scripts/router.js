@@ -6,7 +6,8 @@ import {
     UploadProgressProjectTemplate,
     showUserProjects,
     noProjects,
-    showAllProjects
+    showAllProjects,
+    showAllNotReadyProjects
 } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin, hasLoggedIn } from 'usersOptions';
@@ -14,7 +15,8 @@ import {
     processToUploadReadyProject,
     processToUploadProjectInProgress,
     getUserProject,
-    getAllProjects
+    getAllProjects,
+    getAllNotReadyProjects
 } from 'projectOptions';
 
 function hashChecker() {
@@ -88,13 +90,21 @@ function checkForPath(hashUrl) {
             break;
         case 'ready-projects':
             var container = document.getElementById('page-container');
+            container.innerHTML = '';
             getAllProjects().then((projects) => {
                 showAllProjects(projects);
+            }).catch(() => {
+                container.innerHTML = 'There are no ready projects to show.';
             });
             break;
         case 'project-in-progress':
             var container = document.getElementById('page-container');
             container.innerHTML = '';
+            getAllNotReadyProjects().then((projects) => {
+                showAllNotReadyProjects(projects);
+            }).catch(() => {
+                container.innerHTML = 'There are no inprogress projects to show.';
+            });
             break;
         default:
             errorTemplate();
