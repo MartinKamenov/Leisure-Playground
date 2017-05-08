@@ -12,6 +12,4 @@ $('html').keydown(function (e){
       window.alert("You have summoned ninjas to this page.\n Quick make your browser window smaller to destroy them!!!");
   }
   
-  console.log(keysPressed);
-  console.log(keysPressed.indexOf('5'))
 })

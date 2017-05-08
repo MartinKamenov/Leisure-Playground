@@ -155,7 +155,7 @@ function showUserProjects(userProject) {
             div.appendChild(h1);
 
             var h3 = document.createElement('h3');
-            h3.innerHTML = `Link: <a href="${videoLinks[i]}">${videoLinks[i]}</a><br>`;
+            h3.innerHTML = `Link: <a href="${videoLinks[i]}" target="_blank" >${videoLinks[i]}</a><br>`;
             div.appendChild(h3);
 
             var p = document.createElement('p');

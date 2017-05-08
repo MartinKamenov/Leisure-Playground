@@ -14,7 +14,7 @@ function isLoggedIn() {
         userName.style.fontFamily = "Impact, Charcoal, sans-serif";
 
         var userImg = document.getElementById('profileHomeButton');
-        userImg.src = '../images/userProfileButton.jpg';
+        userImg.src = '../images/userProfileButton.png';
         userImg.style.width = '50px';
         userImg.style.height = '50px';
         userImg.addEventListener('click', () => {
