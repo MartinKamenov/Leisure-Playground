@@ -130,9 +130,9 @@ function noProjects() {
 }
 
 function showUserProjects(userProject) {
-    var projectNames = userProject.ProjectName;
-    var videoLinks = userProject.VideoLink;
-    var descriptions = userProject.Description;
+    var projectNames = userProject.ProjectName.split(',');
+    var videoLinks = userProject.VideoLink.split(',');
+    var descriptions = userProject.Description.split(',');
     var template =
         '<h1 class="project-type-header">Ready Projects: </h1>' +
         '<form class="upload-project-form" id="form">' +

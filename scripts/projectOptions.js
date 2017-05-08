@@ -11,39 +11,44 @@ function processToUploadReadyProject() {
         if (projectName.length > 2 && videoLink.length > 5 && description.length > 5) {
 
             getUserProject().then((data) => {
-                var allProjectNames = [];
-                var allVideoLinks = [];
-                var allDescriptions = [];
+                console.log(data);
+                var allProjectNames = data.ProjectName.split(',');
+                var allVideoLinks = data.ProjectName.split(',');
+                var allDescriptions = data.ProjectName.split(',');
 
                 if (data.ProjectName) {
-                    allProjectNames.push(data.ProjectName);
-                    allVideoLinks.push(data.VideoLink);
-                    allDescriptions.push(data.Description);
+                    allProjectNames.push(projectName);
+                    allVideoLinks.push(videoLink);
+                    allDescriptions.push(description);
                 }
-                allProjectNames.push(projectName);
-                allVideoLinks.push(videoLink);
-                allDescriptions.push(description);
 
-                console.log(allProjectNames);
+                var allProjectNamesString = allProjectNames.join(',');
+                var allVideoLinksString = allVideoLinks.join(',');
+                var allDescriptions = allDescriptions.join(',');
+
+                console.log(allProjectNamesString);
 
                 const project = {
-                    ProjectName: allProjectNames,
-                    VideoLink: allVideoLinks,
+                    ProjectName: allProjectNamesString,
+                    VideoLink: allVideoLinksString,
                     Description: allDescriptions
                 };
 
                 uploadReadyProject(project);
-            }).catch((data) => {
-
-                const project = {
-                    ProjectName: projectName,
-                    VideoLink: videoLink,
-                    Description: description
-                };
-                uploadReadyProject(project);
             });
-        } else {
-            console.log('Project properties are too short');
+            /*.catch((data) => {
+                            console.log('broken');
+                            const project = {
+                                ProjectName: projectName,
+                                VideoLink: videoLink,
+                                Description: description
+                            };
+                            uploadReadyProject(project);
+                        });
+                    } else {
+                        console.log('Project properties are too short');
+                    }
+                })*/
         }
     });
 }
