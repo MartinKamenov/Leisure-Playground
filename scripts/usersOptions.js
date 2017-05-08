@@ -1,9 +1,11 @@
 import { jQuery } from 'jQuery';
 import { hasUser, noUser } from 'templates';
+import { getAllProjects } from 'projectOptions';
 
 const appKey = "kid_B1F_NepCe";
 const appSecret = "ecb4db62af65485b966a2a63e4940008";
 const kinveyUrl = "https://baas.kinvey.com";
+const separator = '|^|';
 
 function isLoggedIn() {
     var username = localStorage.getItem('username');
@@ -124,4 +126,42 @@ function login(username, password) {
     });
 }
 
-export { isLoggedIn, hasLoggedIn, processToRegister, processToLogin, appKey, appSecret, kinveyUrl };
+function getTopUsers() {
+    var allUsers = [];
+    getAllProjects().then((data) => {
+        for (var i = 0; i < data.length; i += 1) {
+            allUsers.push(data[i]);
+            console.log(data[i]._id);
+        }
+        allUsers.sort(function(a, b) {
+            return b.ProjectName.split(separator).length - a.ProjectName.split(separator).length;
+        });
+        var container = document.getElementById('page-container');
+        container.innerHTML = '';
+        var form = document.createElement('form');
+        form.className = "form-horizontal";
+        container.appendChild(form);
+
+        var h1 = document.createElement('h1');
+        h1.innerHTML = 'Top 5 Users: <br>';
+        form.appendChild(h1);
+
+        if (allUsers.length < 5) {
+            var till = allUsers.length;
+        } else {
+            var till = 5;
+        }
+
+        for (let i = 0; i < till; i += 1) {
+            var div = document.createElement('div');
+            div.style.height = '60px';
+            div.innerHTML = `<h1>No${i+1}: ${allUsers[i]._id}</h1>`;
+            div.addEventListener('click', () => {
+
+            });
+            form.appendChild(div);
+        }
+    });
+}
+
+export { isLoggedIn, hasLoggedIn, processToRegister, processToLogin, appKey, appSecret, kinveyUrl, getTopUsers };

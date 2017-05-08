@@ -10,13 +10,13 @@ import {
     showAllNotReadyProjects
 } from 'templates';
 import { jquery } from 'jQuery';
-import { processToRegister, processToLogin, hasLoggedIn } from 'usersOptions';
+import { processToRegister, processToLogin, hasLoggedIn, getTopUsers } from 'usersOptions';
 import {
     processToUploadReadyProject,
     processToUploadProjectInProgress,
     getUserProject,
     getAllProjects,
-    getAllNotReadyProjects
+    getAllNotReadyProjects,
 } from 'projectOptions';
 
 function hashChecker() {
@@ -39,7 +39,11 @@ function checkForPath(hashUrl) {
         case 'home':
             var container = document.getElementById('page-container');
             container.innerHTML = "";
-            container.innerHTML = homeTemplate();
+            if (hasLoggedIn()) {
+                container.innerHTML = getTopUsers();
+            } else {
+                container.innerHTML = homeTemplate();
+            }
             break;
         case 'register':
             var container = document.getElementById('page-container');
