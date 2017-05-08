@@ -10,7 +10,12 @@ import {
 } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin, hasLoggedIn } from 'usersOptions';
-import { processToUploadReadyProject, getUserProject, getAllProjects } from 'projectOptions';
+import {
+    processToUploadReadyProject,
+    processToUploadProjectInProgress,
+    getUserProject,
+    getAllProjects
+} from 'projectOptions';
 
 function hashChecker() {
     $(document).ready(function() {
@@ -65,6 +70,7 @@ function checkForPath(hashUrl) {
             var container = document.getElementById('page-container');
             if (isLogged) {
                 container.innerHTML = UploadProgressProjectTemplate();
+                processToUploadProjectInProgress();
             } else {
                 container.innerHTML = "";
                 var h1 = document.createElement('h1');
@@ -88,6 +94,7 @@ function checkForPath(hashUrl) {
             break;
         case 'project-in-progress':
             var container = document.getElementById('page-container');
+            container.innerHTML = '';
             break;
         default:
             errorTemplate();

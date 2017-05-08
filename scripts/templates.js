@@ -98,25 +98,25 @@ function UploadProgressProjectTemplate() {
         '<form class="upload-project-form">' +
         '<div class="form-group">' +
         '<label for="">Project name <p class="normal-text">(longer than 2 symbols)</p></label>' +
-        '<input type="Username" class="form-control" id="" placeholder="Project name">' +
+        '<input type="Username" class="form-control" id="projectName" placeholder="Project name">' +
         '</div>' +
         '<div class="form-group">' +
         '<label for="">Repository Link</label>' +
-        '<input type="url" class="form-control" id="" placeholder="Repo URL">' +
+        '<input type="url" class="form-control" id="projectUrl" placeholder="Repo URL">' +
         '</div>' +
         '<div class="form-group">' +
         '<label for="">How to reach me</label>' +
-        '<textarea type="text" class="form-control contact" id="" placeholder="Input information on how someone ' +
+        '<textarea type="text" class="form-control contact" id="projectContacts" placeholder="Input information on how someone ' +
         'could contact you in order to discuss your project like an email, skype or your postal code :D">' +
         '</textarea>' +
         '</div>' +
         '<div class="form-group">' +
         '<label for="">Description</label>' +
-        '<textarea type="text" class="form-control description" id="" placeholder="Describe your project. Ideas, plot and add a story on how u got to start it and develop it">' +
+        '<textarea type="text" class="form-control description" id="description" placeholder="Describe your project. Ideas, plot and add a story on how u got to start it and develop it">' +
         '</textarea>' +
         '</div>' +
         '<div>' +
-        '<button type="submit" class="btn btn-info upload-project" id="">Upload project</button>' +
+        '<button type="submit" class="btn btn-info upload-project" id="uploadNotReadyProject">Upload project</button>' +
         '</div>' +
         '</form>';
     return template;
@@ -196,21 +196,22 @@ function showAllProjects(allProjects) {
     var container = document.getElementById('page-container');
     container.innerHTML = template;
     var form = document.getElementById('form');
+    var projectNumber = 1;
 
-    for (var i = 0; i <= allProjects.length; i += 1) {
+    for (var i = 0; i < allProjects.length; i += 1) {
         var project = allProjects[i];
         var projectDescriptions = project.Description.split(',');
         var projectNames = project.ProjectName.split(',');
         var projectVideos = project.VideoLink.split(',');
         var userName = project._id;
 
-        for (var j = 0; j <= projectNames.length; j += 1) {
+        for (var j = 0; j < projectNames.length; j += 1) {
 
             var div = document.createElement('div');
 
             var h1 = document.createElement('h1');
             h1.innerHTML = 'UserName: ' + userName + '<br>';
-            h1.innerHTML += (i + 1) + ": " + projectNames[j] + '<br>';
+            h1.innerHTML += (projectNumber) + ": " + projectNames[j] + '<br>';
             div.appendChild(h1);
 
             var h3 = document.createElement('h3');
@@ -220,6 +221,7 @@ function showAllProjects(allProjects) {
             var p = document.createElement('p');
             p.innerHTML = `<h4>Description: </h4> ${projectDescriptions[j]}`;
             div.appendChild(p);
+            projectNumber += 1;
 
             form.appendChild(div);
         }
