@@ -7,7 +7,7 @@ import {
     showUserProjects
 } from 'templates';
 import { jquery } from 'jQuery';
-import { processToRegister, processToLogin } from 'usersOptions';
+import { processToRegister, processToLogin, hasLoggedIn } from 'usersOptions';
 import { processToUploadReadyProject, getUserProject } from 'projectOptions';
 
 function hashChecker() {
@@ -29,10 +29,12 @@ function checkForPath(hashUrl) {
     switch (hashUrl) {
         case 'home':
             var container = document.getElementById('page-container');
+            container.innerHTML = "";
             container.innerHTML = homeTemplate();
             break;
         case 'register':
             var container = document.getElementById('page-container');
+            container.innerHTML = "";
             container.innerHTML = registerTemplate();
             processToRegister();
             break;
@@ -40,13 +42,34 @@ function checkForPath(hashUrl) {
             location.replace('#home');
             break;
         case 'upload-ready-project':
+            var isLogged = hasLoggedIn();
             var container = document.getElementById('page-container');
-            container.innerHTML = UploadReadyProjectTemplate();
-            processToUploadReadyProject();
+            if (isLogged) {
+                container.innerHTML = "";
+                container.innerHTML = UploadReadyProjectTemplate();
+                processToUploadReadyProject();
+            } else {
+                container.innerHTML = "";
+                var h1 = document.createElement('h1');
+                h1.innerHTML = "You should register first if you want to upload a project.";
+                h1.style.color = 'red';
+                container.appendChild(h1);
+                container.innerHTML += registerTemplate();
+            }
             break;
         case 'upload-progress-project':
+            var isLogged = hasLoggedIn();
             var container = document.getElementById('page-container');
-            container.innerHTML = UploadProgressProjectTemplate();
+            if (isLogged) {
+                container.innerHTML = UploadProgressProjectTemplate();
+            } else {
+                container.innerHTML = "";
+                var h1 = document.createElement('h1');
+                h1.innerHTML = "You should register first if you want to upload a project.";
+                h1.style.color = 'red';
+                container.appendChild(h1);
+                container.innerHTML += registerTemplate();
+            }
             break;
         case 'show-user-projects':
             getUserProject().then((userProject) => {

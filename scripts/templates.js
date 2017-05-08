@@ -135,6 +135,11 @@ function showUserProjects(userProject) {
 
     for (var i = 0; i < projectNames.length; i += 1) {
         var div = document.createElement('div');
+        if (i % 2) {
+            div.style.backgroundColor = "lightgrey";
+        } else {
+            div.style.backgroundColor = "white";
+        }
         var h1 = document.createElement('h1');
         h1.innerHTML = i + ": " + projectNames[i] + '<br>';
         div.appendChild(h1);
