@@ -11,7 +11,8 @@ function hasUser() {
     var username = localStorage.getItem('username');
 
     var template = '<form class="form-horizontal">' +
-        '<h1>' +
+        '<h1 id="user">' +
+        '<img id="profileHomeButton"></img>' +
         username +
         '</h1>' +
         '<button id="logout-button" class="btn btn-warning">' +

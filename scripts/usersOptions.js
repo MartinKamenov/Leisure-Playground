@@ -10,6 +10,16 @@ function isLoggedIn() {
     if (username) {
         var registrationForm = document.getElementById('registration-form');
         registrationForm.innerHTML = hasUser();
+        var userName = document.getElementById('user');
+        userName.style.fontFamily = "Impact, Charcoal, sans-serif";
+
+        var userImg = document.getElementById('profileHomeButton');
+        userImg.src = '../images/userProfileButton.jpg';
+        userImg.style.width = '50px';
+        userImg.style.height = '50px';
+        userImg.addEventListener('click', () => {
+            window.location.hash = "#show-user-projects";
+        });
 
         const logoutButton = document.getElementById('logout-button');
         logoutButton.addEventListener('click', () => {
