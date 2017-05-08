@@ -2,18 +2,45 @@ import { hasLoggedIn, appKey, appSecret, kinveyUrl } from 'usersOptions';
 
 function processToUploadReadyProject() {
     var btn = document.getElementById("uploadReadyProject");
+    var projects = [];
     btn.addEventListener("click", () => {
         const projectName = $('#projectName').val();
         const videoLink = $('#videoLink').val();
         const description = $('#description').val();
 
-        const project = {
-            ProjectName: projectName,
-            VideoLink: videoLink,
-            Description: description
-        };
         if (projectName.length > 2 && videoLink.length > 5 && description.length > 5) {
-            uploadReadyProject(project);
+
+            getUserProject().then((data) => {
+                var allProjectNames = [];
+                var allVideoLinks = [];
+                var allDescriptions = [];
+
+                if (data.ProjectName) {
+                    allProjectNames.push(data.ProjectName);
+                    allVideoLinks.push(data.VideoLink);
+                    allDescriptions.push(data.Description);
+                }
+                allProjectNames.push(projectName);
+                allVideoLinks.push(videoLink);
+                allDescriptions.push(description);
+
+                console.log(allProjectNames);
+
+                const project = {
+                    ProjectName: allProjectNames,
+                    VideoLink: allVideoLinks,
+                    Description: allDescriptions
+                };
+
+                uploadReadyProject(project);
+            }).catch((data) => {
+                const project = {
+                    ProjectName: projectName,
+                    VideoLink: videoLink,
+                    Description: description
+                };
+                uploadReadyProject(project);
+            });
         } else {
             console.log('Project properties are too short');
         }
@@ -32,9 +59,7 @@ function uploadReadyProject(project) {
         },
         data: JSON.stringify(project),
         contentType: 'application/json',
-        success: (returned) => {
-            console.log("Uploaded");
-        },
+        success: (returned) => {},
         error: () => alert("failed creating project!")
     });
 }
@@ -48,36 +73,43 @@ function getUserProject() {
     const username = localStorage.getItem('username');
 
     const projects = {};
-    $.ajax({
-        url: `${kinveyUrl}/appdata/${appKey}/projects/${username}`,
-        method: 'GET',
-        headers: {
-            Authorization: `Kinvey ${authToken}`
-        },
-        contentType: 'application/json',
-        success: (userProjects) => {
-            console.log(userProjects);
-        },
-        error: () => alert("failed getting user projects!")
-    });
-    return projects;
+
+    return new Promise((resolve, reject) =>
+        $.ajax({
+            url: `${kinveyUrl}/appdata/${appKey}/projects/${username}`,
+            method: 'GET',
+            headers: {
+                Authorization: `Kinvey ${authToken}`
+            },
+            contentType: 'application/json',
+            success: (userProjects) => {
+                resolve(userProjects);
+            },
+            error: () => reject()
+        })
+    );
 }
 
 function getAllProjects() {
     const authToken = localStorage.getItem('auth-token');
     const username = localStorage.getItem('username');
-    $.ajax({
-        url: `${kinveyUrl}/appdata/${appKey}/projects`,
-        method: 'GET',
-        headers: {
-            Authorization: `Kinvey ${authToken}`
-        },
-        contentType: 'application/json',
-        success: (allProjects) => {
-            console.log(allProjects);
-        },
-        error: () => alert("failed getting user projects!")
-    });
+
+    const projects = {};
+
+    return new Promise((resolve, reject) =>
+        $.ajax({
+            url: `${kinveyUrl}/appdata/${appKey}/projects`,
+            method: 'GET',
+            headers: {
+                Authorization: `Kinvey ${authToken}`
+            },
+            contentType: 'application/json',
+            success: (allProjects) => {
+                resolve(allProjects);
+            },
+            error: () => reject()
+        })
+    );
 }
 
 export { processToUploadReadyProject, uploadReadyProject, uploadProjectInProgress, getUserProject, getAllProjects }

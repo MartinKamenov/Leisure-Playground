@@ -121,6 +121,39 @@ function UploadProgressProjectTemplate() {
     return template;
 }
 
+function showUserProjects(userProject) {
+    var projectNames = userProject.ProjectName;
+    var videoLinks = userProject.VideoLink;
+    var descriptions = userProject.Description;
+    var template =
+        '<h1 class="project-type-header">Ready Projects: </h1>' +
+        '<form class="upload-project-form" id="form">' +
+        '</form>';
+
+    var container = document.getElementById('page-container');
+    container.innerHTML = template;
+
+    for (var i = 0; i < projectNames.length; i += 1) {
+        var div = document.createElement('div');
+        var h1 = document.createElement('h1');
+        h1.innerHTML = i + ": " + projectNames[i] + '<br>';
+        div.appendChild(h1);
+
+        var h3 = document.createElement('h3');
+        h3.innerHTML = `Link: <a href="${videoLinks[i]}">${videoLinks[i]}</a><br>`;
+        div.appendChild(h3);
+
+        var p = document.createElement('p');
+        p.innerHTML = `<h4>Description: </h4> ${descriptions[i]}`;
+        div.appendChild(p);
+
+        var form = document.getElementById('form');
+        form.appendChild(div);
+    }
+
+    return this;
+}
+
 function errorTemplate() {
     document.body.innerHTML = '';
     var p = document.createElement('p');
@@ -133,4 +166,13 @@ function errorTemplate() {
     document.body.appendChild(a);
 }
 
-export { homeTemplate, registerTemplate, hasUser, noUser, errorTemplate, UploadReadyProjectTemplate, UploadProgressProjectTemplate };
+export {
+    homeTemplate,
+    registerTemplate,
+    hasUser,
+    noUser,
+    errorTemplate,
+    UploadReadyProjectTemplate,
+    UploadProgressProjectTemplate,
+    showUserProjects
+};

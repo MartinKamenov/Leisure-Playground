@@ -4,3 +4,4 @@ import { uploadReadyProject, uploadProjectInProgress, getUserProject, getAllProj
 
 isLoggedIn();
 hashChecker();
+//var a = getUserProject().then((data) => console.log(data));

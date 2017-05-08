@@ -1,7 +1,14 @@
-import { homeTemplate, registerTemplate, errorTemplate, UploadReadyProjectTemplate, UploadProgressProjectTemplate } from 'templates';
+import {
+    homeTemplate,
+    registerTemplate,
+    errorTemplate,
+    UploadReadyProjectTemplate,
+    UploadProgressProjectTemplate,
+    showUserProjects
+} from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin } from 'usersOptions';
-import { processToUploadReadyProject } from 'projectOptions';
+import { processToUploadReadyProject, getUserProject } from 'projectOptions';
 
 function hashChecker() {
     $(document).ready(function() {
@@ -40,6 +47,11 @@ function checkForPath(hashUrl) {
         case 'upload-progress-project':
             var container = document.getElementById('page-container');
             container.innerHTML = UploadProgressProjectTemplate();
+            break;
+        case 'show-user-projects':
+            getUserProject().then((userProject) => {
+                showUserProjects(userProject);
+            });
             break;
         default:
             errorTemplate();
