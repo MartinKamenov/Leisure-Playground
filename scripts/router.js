@@ -19,7 +19,7 @@ import {
     getAllProjects,
     getAllNotReadyProjects,
 } from 'projectOptions';
-import { processToCreateGame, getAllGames } from 'gameOptions'
+import { processToCreateGame, getAllGames, testCode } from 'gameOptions'
 
 function hashChecker() {
     $(document).ready(function() {
@@ -122,7 +122,8 @@ function checkForPath(hashUrl) {
             container.innerHTML = '';
             getAllGames().then((games) => container.appendChild(showGames(games)));
             break;
-        case 'playGame':
+        case 'testCode':
+            testCode();
             break;
         default:
             errorTemplate();

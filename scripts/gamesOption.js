@@ -1,7 +1,9 @@
 import { hasLoggedIn, appKey, appSecret, kinveyUrl } from 'usersOptions';
 
+var container = document.getElementById('page-container');
+
 function processToCreateGame() {
-    var container = document.getElementById('page-container');
+
     container.innerHTML = '';
 
     container.innerHTML = '<label for="">Game Name: </label>' +
@@ -63,7 +65,6 @@ function getAllGames() {
 function playGame(gameName, sourceCode) {
     const newPlace = 'var container = document.getElementById("page-container");' +
         'container';
-    var container = document.getElementById('page-container');
     container.innerHTML = '';
 
     while (true) {
@@ -78,4 +79,19 @@ function playGame(gameName, sourceCode) {
     container.appendChild(script);
 }
 
-export { processToCreateGame, getAllGames, playGame }
+function testCode() {
+    container.innerHTML = '';
+    var jsCodeContainer = document.createElement('textarea');
+    jsCodeContainer.id = 'JsCode';
+    var readyButton = document.createElement('button');
+    readyButton.id = 'Ready';
+    readyButton.innerHTML = 'Javascript is Ready';
+    container.appendChild(jsCodeContainer);
+    container.appendChild(readyButton);
+    container.innerHTML += '<br>' +
+        '<label>Console (Read Only):</label><br>' +
+        '<textarea id="Console"></textarea>';
+
+}
+
+export { processToCreateGame, getAllGames, playGame, testCode }

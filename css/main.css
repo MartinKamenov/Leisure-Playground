@@ -290,3 +290,17 @@ html {
     width: 300px;
     height: 250px;
 }
+
+#JsCode {
+    width: 400px;
+    height: 200px;
+    overflow: auto;
+}
+
+#Console {
+    width: 400px;
+    height: 200px;
+    overflow: auto;
+    color: white;
+    background-color: black;
+}
