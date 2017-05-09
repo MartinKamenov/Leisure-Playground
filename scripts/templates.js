@@ -5,7 +5,14 @@ var handlebar = 'my handlebar';
 const separator = '|^|';
 
 function homeTemplate() {
-    var template = "HomeTemplate";
+    var template = 
+    '<div class="home-header"><h1 class="project-type-header">Welcome to G.F. Devs</h1></div>'+
+    '<div class="home-text"><p class="website-description"> This is a website for game developers. '+
+    'Regardless if you are a beginner or a pro, this is the place where you can get ur project out to the world. ' +
+    'We have a comunity which is eager to help and check out startup or in some cases ready projects. '+
+    'Register today to begin your amazing journey in the world of game devs.</p><br />'+
+    '<b>(P.S. DO NOT try and type in "jsninja" I repeat do NOT do it!!!)</b></div>'
+    ;
     return template;
 }
 
