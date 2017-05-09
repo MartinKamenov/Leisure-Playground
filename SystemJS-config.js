@@ -12,7 +12,8 @@ SystemJS.config({
         'search': './scripts/search.js',
         'hashchange': './scripts/hashChange.js',
         'localStorageOptions': './scripts/localStorageOptions.js',
-        'projectOptions': './scripts/projectOptions.js'
+        'projectOptions': './scripts/projectOptions.js',
+        'gameOptions': './scripts/gamesOption.js'
     }
 });
 

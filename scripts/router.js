@@ -18,6 +18,7 @@ import {
     getAllProjects,
     getAllNotReadyProjects,
 } from 'projectOptions';
+import { processToCreateGame, getAllGames } from 'gameOptions'
 
 function hashChecker() {
     $(document).ready(function() {
@@ -38,7 +39,7 @@ function checkForPath(hashUrl) {
     var container = document.getElementById('page-container');
     switch (hashUrl) {
         case 'home':
-            
+
             container.innerHTML = "";
             if (hasLoggedIn()) {
                 container.innerHTML = getTopUsers();
@@ -47,7 +48,7 @@ function checkForPath(hashUrl) {
             }
             break;
         case 'register':
-            
+
             container.innerHTML = "";
             container.innerHTML = registerTemplate();
             processToRegister();
@@ -57,7 +58,7 @@ function checkForPath(hashUrl) {
             break;
         case 'upload-ready-project':
             var isLogged = hasLoggedIn();
-            
+
             if (isLogged) {
                 container.innerHTML = "";
                 container.innerHTML = UploadReadyProjectTemplate();
@@ -65,7 +66,7 @@ function checkForPath(hashUrl) {
             } else {
                 container.innerHTML = "";
                 var h1 = document.createElement('h1');
-                h1.className='register-error-msg';
+                h1.className = 'register-error-msg';
                 h1.innerHTML = "You should register first if you want to upload a project.";
                 container.appendChild(h1);
                 container.innerHTML += registerTemplate();
@@ -74,14 +75,14 @@ function checkForPath(hashUrl) {
             break;
         case 'upload-progress-project':
             var isLogged = hasLoggedIn();
-            
+
             if (isLogged) {
                 container.innerHTML = UploadProgressProjectTemplate();
                 processToUploadProjectInProgress();
             } else {
                 container.innerHTML = "";
                 var h1 = document.createElement('h1');
-                h1.className='register-error-msg';
+                h1.className = 'register-error-msg';
                 h1.innerHTML = "You should register first if you want to upload a project.";
                 container.appendChild(h1);
                 container.innerHTML += registerTemplate();
@@ -94,7 +95,7 @@ function checkForPath(hashUrl) {
             }).catch(() => noProjects());
             break;
         case 'ready-projects':
-            
+
             container.innerHTML = '';
             getAllProjects().then((projects) => {
                 showAllProjects(projects);
@@ -103,13 +104,20 @@ function checkForPath(hashUrl) {
             });
             break;
         case 'project-in-progress':
-            
+
             container.innerHTML = '';
             getAllNotReadyProjects().then((projects) => {
                 showAllNotReadyProjects(projects);
             }).catch(() => {
                 container.innerHTML = '<h1 class="register-error-msg">You need to sign in if you want to look at projects</h1>';
             });
+            break;
+
+        case 'createGame':
+            processToCreateGame();
+            break;
+        case 'showGames':
+            getAllGames();
             break;
         default:
             errorTemplate();
