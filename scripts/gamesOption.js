@@ -56,18 +56,36 @@ function playGame(gameName, sourceCode) {
 }
 
 function testCode() {
+    const replacePart = "console.log";
+    const replacingPart = "var myConsole = document.getElementById('Console'); myConsole.value = ";
     container.innerHTML = '';
     var jsCodeContainer = document.createElement('textarea');
     jsCodeContainer.id = 'JsCode';
     var readyButton = document.createElement('button');
     readyButton.id = 'Ready';
-    readyButton.innerHTML = 'Javascript is Ready';
+    readyButton.innerText = 'Javascript is Ready';
+
     container.appendChild(jsCodeContainer);
     container.appendChild(readyButton);
     container.innerHTML += '<br>' +
         '<label>Console (Read Only):</label><br>' +
         '<textarea id="Console"></textarea>';
-
+    var myConsole = document.getElementById('Console');
+    document.getElementById('Ready').addEventListener('click', () => {
+        var jsCode = document.getElementById("JsCode").value;
+        if (jsCode) {
+            while (true) {
+                if (jsCode.indexOf(replacePart) < 0) {
+                    break;
+                }
+                jsCode = jsCode.replace(replacePart, replacingPart);
+            }
+            var myscript = document.createElement("script");
+            myscript.innerHTML = jsCode;
+            myConsole.appendChild(myscript);
+            document.getElementById("JsCode").value = "";
+        }
+    });
 }
 
 export { getAllGames, playGame, testCode, createGame }
