@@ -7,7 +7,8 @@ import {
     showUserProjects,
     noProjects,
     showAllProjects,
-    showAllNotReadyProjects
+    showAllNotReadyProjects,
+    showGames
 } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin, hasLoggedIn, getTopUsers } from 'usersOptions';
@@ -114,10 +115,14 @@ function checkForPath(hashUrl) {
             break;
 
         case 'createGame':
+            container.innerHTML = '';
             processToCreateGame();
             break;
         case 'showGames':
-            getAllGames();
+            container.innerHTML = '';
+            getAllGames().then((games) => container.appendChild(showGames(games)));
+            break;
+        case 'playGame':
             break;
         default:
             errorTemplate();

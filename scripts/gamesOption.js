@@ -60,4 +60,8 @@ function getAllGames() {
     );
 }
 
-export { processToCreateGame, getAllGames }
+function playGame(gameName, sourceCode) {
+    console.log('play');
+}
+
+export { processToCreateGame, getAllGames, playGame }

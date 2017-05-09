@@ -1,4 +1,5 @@
 import { Handlebars } from 'handlebars';
+import { playGame } from 'gameOptions';
 
 var handlebar = 'my handlebar';
 const separator = '|^|';
@@ -147,19 +148,19 @@ function showUserProjects(userProject) {
     if (projectNames instanceof Array) {
         for (var i = 0; i < projectNames.length; i += 1) {
             var div = document.createElement('div');
-            div.className='user-project-div';
+            div.className = 'user-project-div';
             var h1 = document.createElement('h1');
-            h1.className='project-header';
+            h1.className = 'project-header';
             h1.innerHTML = (i + 1) + ": " + projectNames[i] + '<br>';
             div.appendChild(h1);
-            var innerDiv=document.createElement('div');
-            innerDiv.className='user-project-inner-div';
+            var innerDiv = document.createElement('div');
+            innerDiv.className = 'user-project-inner-div';
             var link = document.createElement('p');
-            link.className="project-link";
+            link.className = "project-link";
             link.innerHTML = `Link: <a  href="${videoLinks[i]}" target="_blank" >${videoLinks[i]}</a><br>`;
             innerDiv.appendChild(link);
             var description = document.createElement('div');
-            description.className='description-project-div';
+            description.className = 'description-project-div';
             description.innerHTML = `<p>Description: </p> <p class="project-description">${descriptions[i]}</p>`;
             innerDiv.appendChild(description);
             div.appendChild(innerDiv);
@@ -209,22 +210,22 @@ function showAllProjects(allProjects) {
         for (var j = 0; j < projectNames.length; j += 1) {
 
             var div = document.createElement('div');
-            div.className='user-project-div';
+            div.className = 'user-project-div';
             var h1 = document.createElement('h1');
-            h1.className='project-header';
+            h1.className = 'project-header';
             h1.innerHTML = (projectNumber) + ": " + projectNames[j] + '<br>';
             h1.innerHTML += '<p class="project-username">Username: ' + userName + '</p>';
             div.appendChild(h1);
-            var innerDiv=document.createElement('div');
-            innerDiv.className='user-project-inner-div';
+            var innerDiv = document.createElement('div');
+            innerDiv.className = 'user-project-inner-div';
 
             var link = document.createElement('div');
-            link.className="project-link";
+            link.className = "project-link";
             link.innerHTML = `Link: <a href="${projectVideos[j]}" target="_blank" >${projectVideos[j]}</a><br>`;
             innerDiv.appendChild(link);
 
             var description = document.createElement('div');
-            description.className='description-project-div';
+            description.className = 'description-project-div';
             description.innerHTML = `<p>Description: </p> <p class="project-description">${projectDescriptions[j]}</p>`;
             innerDiv.appendChild(description);
             div.appendChild(innerDiv)
@@ -259,27 +260,27 @@ function showAllNotReadyProjects(allProjects) {
         for (var j = 0; j < projectNames.length; j += 1) {
 
             var div = document.createElement('div');
-            div.className='user-project-div';
+            div.className = 'user-project-div';
             var h1 = document.createElement('h1');
-            h1.className='project-header';
+            h1.className = 'project-header';
             h1.innerHTML = (projectNumber) + ": " + projectNames[j] + '<br>';
             h1.innerHTML += '<p class="project-username">Username: ' + userName + '</p>';
             div.appendChild(h1);
-            var innerDiv=document.createElement('div');
-            innerDiv.className='user-project-inner-div';
+            var innerDiv = document.createElement('div');
+            innerDiv.className = 'user-project-inner-div';
 
             var link = document.createElement('div');
-            link.className="project-link";
+            link.className = "project-link";
             link.innerHTML = `Link: <a href="${projectUrl[j]}" target="_blank" >${projectUrl[j]}</a><br>`;
             innerDiv.appendChild(link);
 
             var contacts = document.createElement('div');
-            contacts.className='contact-project-div';
+            contacts.className = 'contact-project-div';
             contacts.innerHTML = `<p>Contact me:</p> <p class="project-contacts">${projectContacts[j]}</p><br>`;
             innerDiv.appendChild(contacts);
 
             var description = document.createElement('div');
-            description.className='description-project-div';
+            description.className = 'description-project-div';
             description.innerHTML = `<p>Description: </p> <p class="project-description">${projectDescriptions[j]}</p>`;
             innerDiv.appendChild(description);
             div.appendChild(innerDiv)
@@ -304,6 +305,26 @@ function errorTemplate() {
     document.body.appendChild(a);
 }
 
+function showGames(games) {
+    var template = document.createElement('form');
+    template.className = "upload-project-form";
+
+    var container = document.getElementById('page-container');
+    container.innerHTML = template;
+    for (var i = 0; i < games.length; i += 1) {
+        var game = games[i];
+        var div = document.createElement('div');
+        var h1 = document.createElement('h1');
+        h1.innerHTML = `${i+1}: ${game.gameName}`;
+        div.appendChild(h1);
+        template.appendChild(div);
+        div.addEventListener('click', () => {
+            playGame(game.gameName, game.sourceCode);
+        });
+    }
+    return template;
+}
+
 export {
     homeTemplate,
     registerTemplate,
@@ -313,6 +334,7 @@ export {
     UploadReadyProjectTemplate,
     UploadProgressProjectTemplate,
     showUserProjects,
+    showGames,
     noProjects,
     showAllProjects,
     showAllNotReadyProjects
