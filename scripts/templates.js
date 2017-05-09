@@ -297,11 +297,23 @@ function processToCreateGame() {
     var container = document.getElementById('page-container');
     container.innerHTML = '';
 
-    container.innerHTML = '<label for="">Game Name: </label>' +
-        '<input id="gameName"><br>' +
+    container.innerHTML = 
+        '<h1 class="project-type-header">Create Game</h1>' +
+        '<form class="upload-project-form">' +
+        '<div class="form-group">' +
+        '<label for="">Game Name: <p class="normal-text">(longer than 2 symbols)</p></label>' +
+        '<input type="Username" class="form-control" id="gameName" placeholder="Type in ur awesome game name">' +
+        '</div>' +
+        '<div class="form-group">' +
         '<label for="">Source Code</label>' +
-        '<textarea id="sourceCode"></textarea><br>' +
-        '<button type="" id="createGameButton">Create Game</button>';
+        '<textarea type="text" class="form-control description" id="sourceCode" placeholder="Input gamecode here">' +
+        '</textarea>' +
+        '</div>' +
+        '<div>' +
+        '<button type="submit" class="btn btn-info upload-project" id="createGameButton">Create Game</button>' +
+        '</div>' +
+        '</form>';
+
 
     var btn = document.getElementById('createGameButton');
     btn.addEventListener('click', () => {

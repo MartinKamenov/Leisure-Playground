@@ -282,19 +282,12 @@ html {
     border-top: 2px groove;
 }
 
-#gameName {
-    width: 200px;
-}
-
-#sourceCode {
-    width: 300px;
-    height: 250px;
-}
 
 #JsCode {
     width: 400px;
     height: 200px;
     overflow: auto;
+    resize: none;
 }
 
 #Console {
@@ -303,4 +296,5 @@ html {
     overflow: auto;
     color: white;
     background-color: black;
+    resize: none;
 }

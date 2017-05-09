@@ -17,3 +17,12 @@ $('#upload-ready-project').click(function() {
 $('#upload-progress-project').click(function() {
     window.location.hash = "#upload-progress-project";
 });
+$('#play-game').click(function() {
+    window.location.hash = "#showGames";
+});
+$('#create-game').click(function() {
+    window.location.hash = "#createGame";
+});
+$('#test-code').click(function() {
+    window.location.hash = "#testCode";
+});
