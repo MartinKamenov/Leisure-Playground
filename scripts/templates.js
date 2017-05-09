@@ -158,8 +158,8 @@ function showUserProjects(userProject) {
             link.className="project-link";
             link.innerHTML = `Link: <a  href="${videoLinks[i]}" target="_blank" >${videoLinks[i]}</a><br>`;
             innerDiv.appendChild(link);
-            var description = document.createElement('p');
-
+            var description = document.createElement('div');
+            description.className='description-project-div';
             description.innerHTML = `<p>Description: </p> <p class="project-description">${descriptions[i]}</p>`;
             innerDiv.appendChild(description);
             div.appendChild(innerDiv);
@@ -224,6 +224,7 @@ function showAllProjects(allProjects) {
             innerDiv.appendChild(link);
 
             var description = document.createElement('div');
+            description.className='description-project-div';
             description.innerHTML = `<p>Description: </p> <p class="project-description">${projectDescriptions[j]}</p>`;
             innerDiv.appendChild(description);
             div.appendChild(innerDiv)

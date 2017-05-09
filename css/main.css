@@ -228,3 +228,10 @@ html{
 .contact-project-div>p, .description-project-div>p{
     margin: 0;
 }
+.contact-project-div, .description-project-div{
+    margin-bottom: 10px;
+    border: 0;
+    border-style: groove;
+    border-top: 2px groove;
+
+}
