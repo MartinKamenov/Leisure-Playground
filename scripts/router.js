@@ -8,7 +8,8 @@ import {
     noProjects,
     showAllProjects,
     showAllNotReadyProjects,
-    showGames
+    showGames,
+    processToCreateGame
 } from 'templates';
 import { jquery } from 'jQuery';
 import { processToRegister, processToLogin, hasLoggedIn, getTopUsers } from 'usersOptions';
@@ -19,7 +20,7 @@ import {
     getAllProjects,
     getAllNotReadyProjects,
 } from 'projectOptions';
-import { processToCreateGame, getAllGames, testCode } from 'gameOptions'
+import { getAllGames, testCode } from 'gameOptions'
 
 function hashChecker() {
     $(document).ready(function() {

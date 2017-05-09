@@ -1,5 +1,5 @@
 import { Handlebars } from 'handlebars';
-import { playGame } from 'gameOptions';
+import { playGame, createGame } from 'gameOptions';
 
 var handlebar = 'my handlebar';
 const separator = '|^|';
@@ -293,6 +293,30 @@ function showAllNotReadyProjects(allProjects) {
     return template;
 }
 
+function processToCreateGame() {
+    var container = document.getElementById('page-container');
+    container.innerHTML = '';
+
+    container.innerHTML = '<label for="">Game Name: </label>' +
+        '<input id="gameName"><br>' +
+        '<label for="">Source Code</label>' +
+        '<textarea id="sourceCode"></textarea><br>' +
+        '<button type="" id="createGameButton">Create Game</button>';
+
+    var btn = document.getElementById('createGameButton');
+    btn.addEventListener('click', () => {
+        var gameName = $('#gameName').val();
+        var sourceCode = $('#sourceCode').val();
+
+        const game = {
+            gameName: gameName,
+            sourceCode: sourceCode
+        };
+
+        createGame(game);
+    });
+}
+
 function errorTemplate() {
     document.body.innerHTML = '';
     var p = document.createElement('p');
@@ -337,5 +361,6 @@ export {
     showGames,
     noProjects,
     showAllProjects,
-    showAllNotReadyProjects
+    showAllNotReadyProjects,
+    processToCreateGame
 };

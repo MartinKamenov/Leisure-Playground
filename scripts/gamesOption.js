@@ -2,30 +2,6 @@ import { hasLoggedIn, appKey, appSecret, kinveyUrl } from 'usersOptions';
 
 var container = document.getElementById('page-container');
 
-function processToCreateGame() {
-
-    container.innerHTML = '';
-
-    container.innerHTML = '<label for="">Game Name: </label>' +
-        '<input id="gameName"><br>' +
-        '<label for="">Source Code</label>' +
-        '<textarea id="sourceCode"></textarea><br>' +
-        '<button type="" id="createGameButton">Create Game</button>';
-
-    var btn = document.getElementById('createGameButton');
-    btn.addEventListener('click', () => {
-        var gameName = $('#gameName').val();
-        var sourceCode = $('#sourceCode').val();
-
-        const game = {
-            gameName: gameName,
-            sourceCode: sourceCode
-        };
-
-        createGame(game);
-    });
-}
-
 function createGame(game) {
     const username = localStorage.getItem('username');
     const authToken = localStorage.getItem('auth-token');
@@ -94,4 +70,4 @@ function testCode() {
 
 }
 
-export { processToCreateGame, getAllGames, playGame, testCode }
+export { getAllGames, playGame, testCode, createGame }
