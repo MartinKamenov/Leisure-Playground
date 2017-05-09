@@ -12,6 +12,7 @@ if ($("html").width() < 570) {
         'margin-left': '20px',
     });
     $('header').css("height", "300");
+    $('#searchWord').css("width","180")
 }
 if ($("html").width() < 500) {
     $(".project-type-header").css("width", "350");
@@ -52,24 +53,25 @@ function Resize() {
     }
     //nav bar
     if ($(document).scrollTop() >= 149 && $("html").width() > 570) {
-        $("nav").wrap("<div id='nav-wrap'></div>");                                         // makes the nav bar and search 
+        if($('#nav-wrap').length===0){
+            $("nav").wrap("<div id='nav-wrap'></div>");
+            }                                                                               // makes the nav bar and search 
         $("#nav-wrap").css({                                                                //get a position:fixed when scrolled under
             'width': $("nav").width(),                                                      //and puts a div in its place so the page  
             'height': $("nav").height()                                                     //doesnt change sizes
         })
-        $("#nav-wrap").css({
-            'width': $("nav").width(),
-            'height': $("nav").height()
-        })
         $("nav").css({
             'position': 'fixed',
             'top': '0px',
-            'width': windowWidth
+            'width': windowWidth,
+            'z-index':'100'
         })
     }
     else {
         if ($(document).scrollTop() >= 299 && $("html").width() < 570) {
+            if($('#nav-wrap').length===0){
             $("nav").wrap("<div id='nav-wrap'></div>");
+            }
             $("#nav-wrap").css({
                 'width': $("nav").width(),
                 'height': $("nav").height()
@@ -77,7 +79,8 @@ function Resize() {
             $("nav").css({
                 'position': 'fixed',
                 'top': '0px',
-                'width': windowWidth
+                'width': windowWidth,
+                'z-index':'100'
             })
         }
         else {
@@ -98,10 +101,12 @@ function Resize() {
             'margin-left': '20px',
         });
         $('header').css("height", "300");
+        $('#searchWord').css("width","180")
     }
     else {
         $('#registration-form').css("position", "absolute");
         $('header').css("height", "150px");
+        $('#searchWord').css("width","240")
     }
     //kill da ninjas
     if($("html").width() < 930 && $('.ninja-image').length!==0){                             //removes the ninjas 

@@ -122,21 +122,21 @@ function UploadProgressProjectTemplate() {
         '</form>';
     return template;
 }
-
+//if the user does not have any projects
 function noProjects() {
     var container = document.getElementById('page-container');
     var h1 = document.createElement('h1');
-    h1.innerHTML = "This user has no projects yet.";
+    container.innerHTML = "This user has no projects yet.";
     container.appendChild(h1);
 }
+//when some1 opens his own profile to view projects
 
 function showUserProjects(userProject) {
     var projectNames = userProject.ProjectName.split(separator);
-    console.log(projectNames);
     var videoLinks = userProject.VideoLink.split(separator);
     var descriptions = userProject.Description.split(separator);
     var template =
-        '<h1 class="project-type-header">Ready Projects: </h1>' +
+        '<h1 class="project-type-header">Ready Projects </h1>' +
         '<form class="upload-project-form" id="form">' +
         '</form>';
 
@@ -147,23 +147,22 @@ function showUserProjects(userProject) {
     if (projectNames instanceof Array) {
         for (var i = 0; i < projectNames.length; i += 1) {
             var div = document.createElement('div');
-            if (i % 2) {
-                div.style.backgroundColor = "lightgrey";
-            } else {
-                div.style.backgroundColor = "white";
-            }
+            div.className='user-project-div';
             var h1 = document.createElement('h1');
+            h1.className='project-header';
             h1.innerHTML = (i + 1) + ": " + projectNames[i] + '<br>';
             div.appendChild(h1);
+            var innerDiv=document.createElement('div');
+            innerDiv.className='user-project-inner-div';
+            var link = document.createElement('p');
+            link.className="project-link";
+            link.innerHTML = `Link: <a  href="${videoLinks[i]}" target="_blank" >${videoLinks[i]}</a><br>`;
+            innerDiv.appendChild(link);
+            var description = document.createElement('p');
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = `Link: <a href="${videoLinks[i]}" target="_blank" >${videoLinks[i]}</a><br>`;
-            div.appendChild(h3);
-
-            var p = document.createElement('p');
-            p.innerHTML = `<h4>Description: </h4> ${descriptions[i]}`;
-            div.appendChild(p);
-
+            description.innerHTML = `<p>Description: </p> <p class="project-description">${descriptions[i]}</p>`;
+            innerDiv.appendChild(description);
+            div.appendChild(innerDiv);
             form.appendChild(div);
         }
     } else if (typeof projectNames === 'string' || projectNames instanceof String) {
@@ -189,9 +188,9 @@ function showUserProjects(userProject) {
 
     return this;
 }
-
+// shows all ready projects when u open the ready projects hash
 function showAllProjects(allProjects) {
-    var template = '<h1 class="project-type-header">Ready Projects: </h1>' +
+    var template = '<h1 class="project-type-header">Ready Projects </h1>' +
         '<form class="upload-project-form" id="form">' +
         '</form>';
 
@@ -210,19 +209,24 @@ function showAllProjects(allProjects) {
         for (var j = 0; j < projectNames.length; j += 1) {
 
             var div = document.createElement('div');
-
+            div.className='user-project-div';
             var h1 = document.createElement('h1');
-            h1.innerHTML = 'Username: ' + userName + '<br>';
-            h1.innerHTML += (projectNumber) + ": " + projectNames[j] + '<br>';
+            h1.className='project-header';
+            h1.innerHTML = (projectNumber) + ": " + projectNames[j] + '<br>';
+            h1.innerHTML += '<p class="project-username">Username: ' + userName + '</p>';
             div.appendChild(h1);
+            var innerDiv=document.createElement('div');
+            innerDiv.className='user-project-inner-div';
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = `Link: <a href="${projectVideos[j]}" target="_blank" >${projectVideos[j]}</a><br>`;
-            div.appendChild(h3);
+            var link = document.createElement('div');
+            link.className="project-link";
+            link.innerHTML = `Link: <a href="${projectVideos[j]}" target="_blank" >${projectVideos[j]}</a><br>`;
+            innerDiv.appendChild(link);
 
-            var p = document.createElement('p');
-            p.innerHTML = `<h4>Description: </h4> ${projectDescriptions[j]}`;
-            div.appendChild(p);
+            var description = document.createElement('div');
+            description.innerHTML = `<p>Description: </p> <p class="project-description">${projectDescriptions[j]}</p>`;
+            innerDiv.appendChild(description);
+            div.appendChild(innerDiv)
             projectNumber += 1;
 
             form.appendChild(div);
@@ -231,9 +235,9 @@ function showAllProjects(allProjects) {
 
     return template;
 }
-
+//shows all not ready projects when u open the progress project hash
 function showAllNotReadyProjects(allProjects) {
-    var template = '<h1 class="project-type-header">Projects in progress: </h1>' +
+    var template = '<h1 class="project-type-header">Projects in progress </h1>' +
         '<form class="upload-project-form" id="form">' +
         '</form>';
 
@@ -242,7 +246,6 @@ function showAllNotReadyProjects(allProjects) {
     var form = document.getElementById('form');
     var projectNumber = 1;
 
-    console.log(allProjects);
 
     for (var i = 0; i < allProjects.length; i += 1) {
         var project = allProjects[i];
@@ -255,23 +258,30 @@ function showAllNotReadyProjects(allProjects) {
         for (var j = 0; j < projectNames.length; j += 1) {
 
             var div = document.createElement('div');
-
+            div.className='user-project-div';
             var h1 = document.createElement('h1');
-            h1.innerHTML = 'Username: ' + userName + '<br>';
-            h1.innerHTML += (projectNumber) + ": " + projectNames[j] + '<br>';
+            h1.className='project-header';
+            h1.innerHTML = (projectNumber) + ": " + projectNames[j] + '<br>';
+            h1.innerHTML += '<p class="project-username">Username: ' + userName + '</p>';
             div.appendChild(h1);
+            var innerDiv=document.createElement('div');
+            innerDiv.className='user-project-inner-div';
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = `Url: <a href="${projectUrl[j]}" target="_blank" >${projectUrl[j]}</a><br>`;
-            div.appendChild(h3);
+            var link = document.createElement('div');
+            link.className="project-link";
+            link.innerHTML = `Link: <a href="${projectUrl[j]}" target="_blank" >${projectUrl[j]}</a><br>`;
+            innerDiv.appendChild(link);
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = `Contact me: <h2>${projectContacts[j]}</h2><br>`;
-            div.appendChild(h3);
+            var contacts = document.createElement('div');
+            contacts.className='contact-project-div';
+            contacts.innerHTML = `<p>Contact me:</p> <p class="project-contacts">${projectContacts[j]}</p><br>`;
+            innerDiv.appendChild(contacts);
 
-            var p = document.createElement('p');
-            p.innerHTML = `<h4>Description: </h4> ${projectDescriptions[j]}`;
-            div.appendChild(p);
+            var description = document.createElement('div');
+            description.className='description-project-div';
+            description.innerHTML = `<p>Description: </p> <p class="project-description">${projectDescriptions[j]}</p>`;
+            innerDiv.appendChild(description);
+            div.appendChild(innerDiv)
             projectNumber += 1;
 
             form.appendChild(div);

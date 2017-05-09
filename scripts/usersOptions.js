@@ -117,6 +117,7 @@ function login(username, password) {
             localStorage.setItem('auth-token', data._kmd.authtoken);
             localStorage.setItem('username', data.username);
             isLoggedIn();
+            window.location.hash = "#show-user-projects"
         },
         error: () => {
             alert("failed login!");
@@ -131,7 +132,6 @@ function getTopUsers() {
     getAllProjects().then((data) => {
         for (var i = 0; i < data.length; i += 1) {
             allUsers.push(data[i]);
-            console.log(data[i]._id);
         }
         allUsers.sort(function(a, b) {
             return b.ProjectName.split(separator).length - a.ProjectName.split(separator).length;
@@ -139,7 +139,6 @@ function getTopUsers() {
         var container = document.getElementById('page-container');
         container.innerHTML = '';
         var form = document.createElement('form');
-        form.className = "form-horizontal";
         container.appendChild(form);
 
         var h1 = document.createElement('h1');

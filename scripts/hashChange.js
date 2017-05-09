@@ -1,3 +1,4 @@
+//changes the hash
 $('#register').click(function() {
     window.location.hash = "#register";
 });

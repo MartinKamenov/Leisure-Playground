@@ -35,9 +35,10 @@ function checkForPath(hashUrl) {
     if (hashUrl === undefined) {
         location.replace('#home');
     }
+    var container = document.getElementById('page-container');
     switch (hashUrl) {
         case 'home':
-            var container = document.getElementById('page-container');
+            
             container.innerHTML = "";
             if (hasLoggedIn()) {
                 container.innerHTML = getTopUsers();
@@ -46,7 +47,7 @@ function checkForPath(hashUrl) {
             }
             break;
         case 'register':
-            var container = document.getElementById('page-container');
+            
             container.innerHTML = "";
             container.innerHTML = registerTemplate();
             processToRegister();
@@ -56,7 +57,7 @@ function checkForPath(hashUrl) {
             break;
         case 'upload-ready-project':
             var isLogged = hasLoggedIn();
-            var container = document.getElementById('page-container');
+            
             if (isLogged) {
                 container.innerHTML = "";
                 container.innerHTML = UploadReadyProjectTemplate();
@@ -64,8 +65,8 @@ function checkForPath(hashUrl) {
             } else {
                 container.innerHTML = "";
                 var h1 = document.createElement('h1');
+                h1.className='register-error-msg';
                 h1.innerHTML = "You should register first if you want to upload a project.";
-                h1.style.color = 'red';
                 container.appendChild(h1);
                 container.innerHTML += registerTemplate();
                 processToRegister();
@@ -73,15 +74,15 @@ function checkForPath(hashUrl) {
             break;
         case 'upload-progress-project':
             var isLogged = hasLoggedIn();
-            var container = document.getElementById('page-container');
+            
             if (isLogged) {
                 container.innerHTML = UploadProgressProjectTemplate();
                 processToUploadProjectInProgress();
             } else {
                 container.innerHTML = "";
                 var h1 = document.createElement('h1');
+                h1.className='register-error-msg';
                 h1.innerHTML = "You should register first if you want to upload a project.";
-                h1.style.color = 'red';
                 container.appendChild(h1);
                 container.innerHTML += registerTemplate();
                 processToRegister();
@@ -93,21 +94,21 @@ function checkForPath(hashUrl) {
             }).catch(() => noProjects());
             break;
         case 'ready-projects':
-            var container = document.getElementById('page-container');
+            
             container.innerHTML = '';
             getAllProjects().then((projects) => {
                 showAllProjects(projects);
             }).catch(() => {
-                container.innerHTML = 'There are no ready projects to show.';
+                container.innerHTML = '<h1 class="register-error-msg">You need to sign in if you want to look at projects</h1>';
             });
             break;
         case 'project-in-progress':
-            var container = document.getElementById('page-container');
+            
             container.innerHTML = '';
             getAllNotReadyProjects().then((projects) => {
                 showAllNotReadyProjects(projects);
             }).catch(() => {
-                container.innerHTML = 'There are no inprogress projects to show.';
+                container.innerHTML = '<h1 class="register-error-msg">You need to sign in if you want to look at projects</h1>';
             });
             break;
         default:
