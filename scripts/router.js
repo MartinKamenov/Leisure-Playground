@@ -116,12 +116,32 @@ function checkForPath(hashUrl) {
             break;
 
         case 'createGame':
-            container.innerHTML = '';
-            processToCreateGame();
+            if (hasLoggedIn()) {
+                container.innerHTML = '';
+                processToCreateGame();
+            } else {
+                container.innerHTML = "";
+                var h1 = document.createElement('h1');
+                h1.className = 'register-error-msg';
+                h1.innerHTML = "You should register first if you want to upload a project.";
+                container.appendChild(h1);
+                container.innerHTML += registerTemplate();
+                processToRegister();
+            }
             break;
         case 'showGames':
-            container.innerHTML = '';
-            getAllGames().then((games) => container.appendChild(showGames(games)));
+            if (hasLoggedIn()) {
+                container.innerHTML = '';
+                getAllGames().then((games) => container.appendChild(showGames(games)));
+            } else {
+                container.innerHTML = "";
+                var h1 = document.createElement('h1');
+                h1.className = 'register-error-msg';
+                h1.innerHTML = "You should register first if you want to upload a project.";
+                container.appendChild(h1);
+                container.innerHTML += registerTemplate();
+                processToRegister();
+            }
             break;
         case 'testCode':
             testCode();

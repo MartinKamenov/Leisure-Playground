@@ -26,8 +26,6 @@ function processToUploadReadyProject() {
                 var allVideoLinksString = allVideoLinks.join(separator);
                 var allDescriptionsString = allDescriptions.join(separator);
 
-                console.log(allProjectNamesString);
-
                 const project = {
                     ProjectName: allProjectNamesString,
                     VideoLink: allVideoLinksString,
@@ -50,8 +48,6 @@ function processToUploadReadyProject() {
 
 function processToUploadProjectInProgress() {
     var btn = document.getElementById("uploadNotReadyProject");
-
-    console.log(btn);
 
     btn.addEventListener("click", () => {
         const projectName = $('#projectName').val();
@@ -112,7 +108,7 @@ function uploadReadyProject(project) {
         },
         data: JSON.stringify(project),
         contentType: 'application/json',
-        success: (returned) => {},
+        success: (returned) => { alert('Successfully uploaded project') },
         error: () => alert("failed creating project!")
     });
 }
@@ -128,7 +124,7 @@ function uploadProjectInProgress(project) {
         },
         data: JSON.stringify(project),
         contentType: 'application/json',
-        success: (returned) => {},
+        success: (returned) => { alert('Successfully uploaded project') },
         error: () => alert("failed creating project!")
     });
 }
