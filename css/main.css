@@ -320,10 +320,10 @@ b {
     padding-left: 30px;
     font-size: 30px;
     margin: 0;
-    background-color: #EE2222;
+    margin-bottom:15px;
+    background-color: #F45555;
     color: #000000;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
+    border-radius: 14px;
     padding-bottom: 5px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
