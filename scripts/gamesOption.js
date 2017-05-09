@@ -61,7 +61,21 @@ function getAllGames() {
 }
 
 function playGame(gameName, sourceCode) {
-    console.log('play');
+    const newPlace = 'var container = document.getElementById("page-container");' +
+        'container';
+    var container = document.getElementById('page-container');
+    container.innerHTML = '';
+
+    while (true) {
+        if (sourceCode.indexOf("document.body") === -1) {
+            break;
+        }
+        sourceCode = sourceCode.replace("document.body", newPlace);
+    }
+
+    var script = document.createElement('script');
+    script.innerHTML = sourceCode;
+    container.appendChild(script);
 }
 
 export { processToCreateGame, getAllGames, playGame }
