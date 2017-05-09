@@ -13,7 +13,7 @@ function createGame(game) {
         },
         data: JSON.stringify(game),
         contentType: 'application/json',
-        success: (returned) => {},
+        success: (returned) => { alert('Successfully uploaded game') },
         error: () => alert("failed creating project!")
     });
 }

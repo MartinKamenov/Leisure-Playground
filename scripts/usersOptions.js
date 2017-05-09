@@ -153,11 +153,10 @@ function getTopUsers() {
 
         for (let i = 0; i < till; i += 1) {
             var div = document.createElement('div');
+            div.className = 'top5';
             div.style.height = '60px';
-            div.innerHTML = `<h1>No${i+1}: ${allUsers[i]._id}</h1>`;
-            div.addEventListener('click', () => {
-
-            });
+            div.innerHTML = `No${i+1}: ${allUsers[i]._id}`;
+            div.addEventListener('click', () => {});
             form.appendChild(div);
         }
     });
