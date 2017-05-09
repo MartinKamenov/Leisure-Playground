@@ -2,7 +2,7 @@
 if ($("html").width() < 960) {
     $("#name-header").text("G F DEVS");                                            //all of these are coppies if the page is loaded
 }                                                                               //in a format which wont load all elements properly
-if ($("html").width() < 915) {
+if ($("html").width() < 1000) {
     $('#search-menu').css("position", "relative");
 }
 if ($("html").width() < 570) {
@@ -11,14 +11,16 @@ if ($("html").width() < 570) {
         'display': '',
         'margin-left': '20px',
     });
-    $('header').css("height", "300");
-    $('#searchWord').css("width","180")
+    $('header').css("height", "300px");
+    $('#searchWord').css("width","180px")
 }
 if ($("html").width() < 500) {
-    $(".project-type-header").css("width", "350");
+    $(".project-type-header").css("width", "350px");
     $("main").css("width", "100%");
-    $("#create-new-user").css("width", "300");
-    $(".upload-project-form").css("width", "300");
+    $("#create-new-user").css("width", "300px");
+    $(".upload-project-form").css("width", "300px");
+    $("#JsCode").css("width","300px")
+    $("#Console").css("width","300px")
 }
 $(window).resize(Resize);
 $(window).scroll(Resize);
@@ -32,7 +34,7 @@ function Resize() {
         $("#name-header").text("GAMES FOR DEVELOPERS");
     }
     //searchbar
-    if ($("html").width() < 915) {
+    if ($("html").width() < 1000) {
         $('#search-menu').css("position", "relative");                                      //changes the sreachr menue
     }
     else {
@@ -40,16 +42,20 @@ function Resize() {
     }
     //the register page/uplod project pages                                                  //resizes them so they fit if the screen
     if ($("html").width() < 500) {  
-        $(".project-type-header").css("width", "350");                                                         //get too small
+        $(".project-type-header").css("width", "350px");                                                         //get too small
         $("main").css("width", "100%");
-        $("#create-new-user").css("width", "300");
-        $(".upload-project-form").css("width", "300");
+        $("#create-new-user").css("width", "300px");
+        $(".upload-project-form").css("width", "300px");
+        $("#JsCode").css("width","300px")
+        $("#Console").css("width","300px")
     }
     else {
-        $(".project-type-header").css("width", "400");
+        $(".project-type-header").css("width", "400px");
         $("main").css("width", "80%");
-        $("#create-new-user").css("width", "400");
-        $(".upload-project-form").css("width", "400");
+        $("#create-new-user").css("width", "400px");
+        $(".upload-project-form").css("width", "400px");
+        $("#JsCode").css("width","400px")
+        $("#Console").css("width","400px")
     }
     //nav bar
     if ($(document).scrollTop() >= 149 && $("html").width() > 570) {
@@ -100,13 +106,13 @@ function Resize() {
             'display': '',                                                          //repositions the register 
             'margin-left': '20px',
         });
-        $('header').css("height", "300");
-        $('#searchWord').css("width","180")
+        $('header').css("height", "300px");
+        $('#searchWord').css("width","180px")
     }
     else {
         $('#registration-form').css("position", "absolute");
         $('header').css("height", "150px");
-        $('#searchWord').css("width","240")
+        $('#searchWord').css("width","240px")
     }
     //kill da ninjas
     if($("html").width() < 930 && $('.ninja-image').length!==0){                             //removes the ninjas 
