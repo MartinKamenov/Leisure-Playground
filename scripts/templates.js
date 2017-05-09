@@ -357,6 +357,7 @@ function showGames(games) {
     for (var i = 0; i < games.length; i += 1) {
         var game = games[i];
         var div = document.createElement('div');
+        div.className='games-div';
         var h1 = document.createElement('h1');
         h1.innerHTML = `${i+1}: ${game.gameName}`;
         div.appendChild(h1);

@@ -328,3 +328,33 @@ b {
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
+.games-div{
+    overflow: hidden;
+    padding:15px;
+    padding-left: 10px;
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+.games-div>h1{
+    margin: 0;
+}
+#root{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#startGame{
+    height: 50px;
+    width: 200px;
+    font-size:20px;
+    background-color: #E66042;
+    border-color: black;
+    border-radius: 15px;
+}
+#startGame:hover{
+    border-color:#1A78DA;
+    background-color: #F2856D;
+}
